@@ -4,7 +4,7 @@ from sqlalchemy import Column, String, Integer, Enum, Numeric
 db = SQLAlchemy()
 
 
-class Ikan():
+class Ikan(db.Model):
     __tablename__ = 'ikan'
     id_ikan = Column(Integer, primary_key=True)
     nama_ikan = Column(String)
@@ -20,7 +20,7 @@ class Ikan():
     kondisi = Column(Enum(FROZEN, FRESH, name='kondisi ikan', default=FROZEN))
 
 
-class Pembeli():
+class Pembeli(db.Model):
     __tablename__ = 'pembeli'
     nomor_pembeli = Column(Integer, primary_key=True, unique=True)
     nama_pembeli = Column(String)

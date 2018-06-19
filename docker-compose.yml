@@ -19,7 +19,7 @@ services:
     image: 'postgres:9.6'
 
     environment:
-      POSTGRES_USER: 'ta'
+      POSTGRES_USER: 'irwan'
       POSTGRES_PASSWORD: '12345'
 
     volumes:

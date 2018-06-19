@@ -1,6 +1,6 @@
 DEBUG = True
 
-SQLALCHEMY_DATABASE_URI = 'postgresql//irwan:12345@service_postgresql_docker/jualikan'
+SQLALCHEMY_DATABASE_URI = 'postgresql://irwan:12345@service_postgresql_docker/jualikan'
 DATABASE_FILE = SQLALCHEMY_DATABASE_URI
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
