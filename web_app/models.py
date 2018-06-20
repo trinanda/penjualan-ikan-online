@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, String, Integer, Enum, Numeric
+from sqlalchemy import Column, String, Integer, Enum, Numeric, Unicode
 
 db = SQLAlchemy()
 
@@ -8,8 +8,11 @@ class Ikan(db.Model):
     __tablename__ = 'ikan'
     id_ikan = Column(Integer, primary_key=True)
     nama_ikan = Column(String)
-    ukuran = Column(Integer)
-    minimal_order = Column(Integer)
+    keterangan_ikan = Column(String)
+    ukuran_dalam_Kg = Column(Integer)
+    minimal_order_dalam_Kg = Column(Integer)
+    room_images = Column(Unicode(128))
+
 
     TERSEDIA = 'tersedia'
     STOCK_HABIS = 'stock habis'
@@ -18,6 +21,12 @@ class Ikan(db.Model):
     FROZEN = 'frozen'
     FRESH = 'segar'
     kondisi = Column(Enum(FROZEN, FRESH, name='kondisi ikan', default=FROZEN))
+
+
+    def __unicode__(self):
+        return self.nama_ikan
+
+    urutan_ikan_dalam_tampilan_halaman = Column(Integer)
 
 
 class Pembeli(db.Model):
