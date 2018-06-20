@@ -30,12 +30,18 @@ def buat_app():
 
     @app.route('/')
     @app.route('/<uri>')
-    def ikan(uri=None):
+    def ikan(fish=None, id_ikan=None):
+
         ikan = Ikan()
-        if uri is not None:
-            ikan = Ikan.query.filter_by(url=uri).first
+
+        if fish is not None:
+            ikan = Ikan.query.filter_by(nama_ikan=fish).first()
         else:
             pass
+
+        # if ikan is not None:
+        #     fish_name = ikan.query.first()
+        #     fish_name = fish_name.nama_ikan
 
         urutan_ikan_dalam_tampilan_halaman = Ikan.query.order_by('urutan_ikan_dalam_tampilan_halaman')
 

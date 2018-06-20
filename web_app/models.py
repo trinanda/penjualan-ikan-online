@@ -11,6 +11,7 @@ class Ikan(db.Model):
     keterangan_ikan = Column(String)
     ukuran_dalam_Kg = Column(Integer)
     minimal_order_dalam_Kg = Column(Integer)
+    harga_per_Kg = Column(Integer)
     room_images = Column(Unicode(128))
 
 
