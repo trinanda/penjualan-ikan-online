@@ -9,10 +9,10 @@ class Ikan(db.Model):
     id_ikan = Column(Integer, primary_key=True)
     nama_ikan = Column(String)
     keterangan_ikan = Column(String)
-    ukuran_dalam_Kg = Column(Integer)
+    berat_ikan_dalam_Kg = Column(Integer)
     minimal_order_dalam_Kg = Column(Integer)
     harga_per_Kg = Column(Integer)
-    room_images = Column(Unicode(128))
+    foto_ikan = Column(Unicode(128))
 
 
     TERSEDIA = 'tersedia'

@@ -39,13 +39,14 @@ def buat_app():
         else:
             pass
 
-        # if ikan is not None:
-        #     fish_name = ikan.query.first()
-        #     fish_name = fish_name.nama_ikan
 
         urutan_ikan_dalam_tampilan_halaman = Ikan.query.order_by('urutan_ikan_dalam_tampilan_halaman')
 
         return render_template("ikan.html", IKANS=urutan_ikan_dalam_tampilan_halaman)
+
+    @app.route('/detail_ikan')
+    def detail_ikan():
+        return render_template("detail_ikan.html")
 
     @app.route('/form_pemesan', methods = ["GET", "POST"])
     def form_pemesan():
@@ -56,6 +57,7 @@ def buat_app():
     @app.route('/invoice')
     def invoice():
         return render_template("invoice.html")
+
 
 
     return app
