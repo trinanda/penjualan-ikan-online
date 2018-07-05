@@ -76,6 +76,17 @@ def buat_app():
         harga_per_Kg = request.args.get('harga_per_Kg')
         foto_ikan = request.args.get('foto_ikan')
 
+        session['NAMA_IKAN'] = nama_ikan
+        session['KETERANGAN_IKAN'] = keterangan_ikan
+        session['BERAT_IKAN_DALAM_KG'] = berat_ikan_dalam_Kg
+        session['MINIMAL_ORDER_DALAM_KG'] = minimal_order_dalam_Kg
+        session['HARGA_PER_KG'] = harga_per_Kg
+        session['ID_IKAN'] = id_ikan
+
+
+
+        if request.method == "get":
+            return render_template("form_data_pembeli.html")
 
         return render_template("detail_ikan.html", ID_IKAN=id_ikan,
                                NAMA_IKAN=nama_ikan, BERAT_IKAN= berat_ikan_dalam_Kg, HARGA_IKAN=harga_per_Kg,
@@ -85,7 +96,31 @@ def buat_app():
 
     @app.route('/form_pemesan', methods = ["GET", "POST"])
     def form_pemesan():
-        if request.method == 'get':
+
+        nama_ikan = session['NAMA_IKAN']
+        keterangan_ikan = session['KETERANGAN_IKAN']
+        berat_ikan_dalam_Kg = session['BERAT_IKAN_DALAM_KG']
+        minimal_order_dalam_Kg = session['MINIMAL_ORDER_DALAM_KG']
+        harga_per_Kg = session['HARGA_PER_KG']
+        id_ikan = session['ID_IKAN']
+
+        if request.method == 'POST':
+            
+            nama_pemesan = request.form.get('nama_pemesan')
+            no_hp_or_wa = request.form.get('no_hp_or_wa')
+            alamat_lengkap = request.form.get('alamat_lengkap')
+
+            tanggal_ingin_dikirim = request.form.get('tanggal_ingin_dikirim')
+
+            id_ikan = session['ID_IKAN']
+            nama_ikan = session['NAMA_IKAN']
+            keterangan_ikan = session['KETERANGAN_IKAN']
+            berat_ikan_dalam_Kg = session['BERAT_IKAN_DALAM_KG']
+            minimal_order_dalam_Kg = session['MINIMAL_ORDER_DALAM_KG']
+            harga_per_Kg = session['HARGA_PER_KG']
+
+            insert_to_db = Pembeli(nama_pemesan, no_hp_or_wa, alamat_lengkap, nama_ikan, jum)
+
             return render_template('invoice.html')
         return render_template("form_data_pembeli.html")
 
@@ -93,7 +128,5 @@ def buat_app():
     @app.route('/invoice')
     def invoice():
         return render_template("invoice.html")
-
-
 
     return app
