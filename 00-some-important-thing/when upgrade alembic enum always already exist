@@ -1,0 +1,12 @@
+on the above of the upgrade function add this line:
+    - status_pembayaran = ENUM('pending', 'confirmed', 'rejected', name='status_pembayaran', create_type=False)
+
+then on this line:
+    - sa.Column('status_pembayaran', sa.Enum('pending', 'confirmed', 'rejected', name='status_pembayaran'), nullable=True),
+
+change it to:
+    - sa.Column('status_pembayaran', status_pembayaran, nullable=True),
+
+
+
+# from sqlalchemy.dialects.postgresql import ENUM
