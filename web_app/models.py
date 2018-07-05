@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, String, Integer, Enum, Numeric, Unicode
+from sqlalchemy import Column, String, Integer, Enum, Numeric, Unicode, ForeignKey
 
 db = SQLAlchemy()
 
@@ -36,3 +36,5 @@ class Pembeli(db.Model):
     nama_pembeli = Column(String)
     nomor_telepon = Column(Numeric)
     alamat_pembeli = Column(String)
+
+    ikan_id = Column(Integer, ForeignKey(Ikan.id_ikan), nullable=False)

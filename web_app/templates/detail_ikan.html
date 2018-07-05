@@ -1,45 +1,12 @@
 {% extends "base-template.html" %}
 {% block content %}
 
-
-<!--Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE HTML>
 <html>
 <head>
-<title>Shoplist A Ecommerce Category Flat Bootstrap Responsive  Website Template | Single :: w3layouts</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery-1.11.0.min.js"></script>
-<!-- Custom Theme files -->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
-<!-- Custom Theme files -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Shoplist Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!--Google Fonts-->
-<link href='//fonts.googleapis.com/css?family=Hind:400,500,300,600,700' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
-<!-- start-smoth-scrolling -->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
-	<script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-				});
-			});
-	</script>
-<!-- //end-smoth-scrolling -->
 <!--flex slider-->
-<script defer src="js/jquery.flexslider.js"></script>
-<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+<script defer src="https://trinanda.github.io/template_irwan/shop_list/js/jquery.flexslider.js"></script>
+<link rel="stylesheet" href="https://trinanda.github.io/template_irwan/shop_list/css/flexslider.css" type="text/css" media="screen" />
 
 <script>
 // Can also be used with $(document).ready()
@@ -51,49 +18,47 @@ $(window).load(function() {
 });
 </script>
 <!--flex slider-->
-<script src="js/imagezoom.js"></script>
-<script src="js/simpleCart.min.js"> </script>
-<script src="js/bootstrap.min.js"></script>
+<script src="https://trinanda.github.io/template_irwan/shop_list/js/imagezoom.js"></script>
+<script src="https://trinanda.github.io/template_irwan/shop_list/js/simpleCart.min.js"> </script>
 </head>
 <body>
-
+<form action="http://localhost:9999/form_pemesan">
 <!--header end here-->
 <!--single start here-->
 <div class="single">
    <div class="container">
    	 <div class="single-main">
    	 	<div class="single-top-main">
+
 	   		<div class="col-md-5 single-top">
 			   <div class="flexslider">
 				  <ul class="slides">
-				    <li data-thumb="images/si1.jpg">
-				        <div class="thumb-image"> <img src="images/s1.jpg" data-imagezoom="true" class="img-responsive"> </div>
+				    <!--<li data-thumb="https://trinanda.github.io/template_irwan/shop_list/images/si1.jpg">-->
+				    <li data-thumb="{{ FOTO_IKAN }}">
+				        <!--<div class="thumb-image"> <img src="https://trinanda.github.io/template_irwan/shop_list/images/s1.jpg" data-imagezoom="true" class="img-responsive"> </div>-->
+				        <div class="thumb-image">
+							<img src="{{ FOTO_IKAN }}" data-imagezoom="true" class="img-responsive" alt="files/{{ FOTO_IKAN }}">
+						</div>
 				    </li>
-				    <li data-thumb="images/si2.jpg">
-				         <div class="thumb-image"> <img src="images/s2.jpg" data-imagezoom="true" class="img-responsive"> </div>
-				    </li>
-				    <li data-thumb="images/si3.jpg">
-				       <div class="thumb-image"> <img src="images/s3.jpg" data-imagezoom="true" class="img-responsive"> </div>
-				    </li>
+				    <!--<li data-thumb="https://trinanda.github.io/template_irwan/shop_list/images/si2.jpg">-->
+				         <!--<div class="thumb-image"> <img src="https://trinanda.github.io/template_irwan/shop_list/images/s2.jpg" data-imagezoom="true" class="img-responsive"> </div>-->
+				    <!--</li>-->
+				    <!--<li data-thumb="https://trinanda.github.io/template_irwan/shop_list/images/si3.jpg">-->
+				       <!--<div class="thumb-image"> <img src="https://trinanda.github.io/template_irwan/shop_list/images/s3.jpg" data-imagezoom="true" class="img-responsive"> </div>-->
+				    <!--</li>-->
 				  </ul>
 			</div>
 			</div>
 			<div class="col-md-7 single-top-left simpleCart_shelfItem">
-				<h2>Undercover</h2>
-				<h1>Lorem ipsum dolor</h1>
-				<h3>Excepteur sint occaecat cupidatat</h3>
-				<h6 class="item_price">$600.00</h6>
-				<p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</p>
-				<h4>Size Charts</h4>
+				<h1>{{ NAMA_IKAN }}</h1>
+				<h2>Ukuran {{ BERAT_IKAN }} Kg</h2>
+				<h6 class="item_price">Rp. {{ HARGA_IKAN }},00</h6>
+				<p>{{ KETERANGAN_IKAN }}</p>
+				<h4>Minimal order untuk ikan ini adalah {{ MINIMAL_ORDER }} Kg</h4>
 				<ul class="bann-btns">
-					<li><select class="bann-size">
-						<option value="select your location">Size</option>
-						<option value="saab">Small</option>
-						<option value="fiat">Medium</option>
-						<option value="audi">Large</option>
-					</select>
-					</li>
-					<li><a href="#" class="item_add">Add To Cart</a></li>
+					<!--<li><a href="#" class="item_add">Lanjutkan pemesanan</a></li>-->
+					<!--<input type="submit" name="submit" value="{{ BUTTON_PESAN }}" class="btn btn-primary btn-lg" />-->
+					<input type="submit" name="submit" value="Lanjutkan Pemesanan" class="btn btn-primary btn-lg" />
 	            </ul>
 			</div>
 		   <div class="clearfix"> </div>
@@ -101,6 +66,7 @@ $(window).load(function() {
 	   <div class="singlepage-product">
 
 		  <div class="clearfix"> </div>
+
 	   </div>
    	 </div>
    </div>
@@ -109,8 +75,5 @@ $(window).load(function() {
 
 </body>
 </html>
-
-
-
 
 {% endblock %}
