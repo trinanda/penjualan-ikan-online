@@ -74,7 +74,10 @@ def buat_app():
         berat_ikan_dalam_Kg = request.args.get('berat_ikan_dalam_Kg')
         minimal_order_dalam_Kg = request.args.get('minimal_order_dalam_Kg')
         harga_per_Kg = request.args.get('harga_per_Kg')
+        harga_per_Kg = int(harga_per_Kg)
         foto_ikan = request.args.get('foto_ikan')
+
+        pesan_berapa_kg = request.form.get('pesan_berapa_kg')
 
         session['NAMA_IKAN'] = nama_ikan
         session['KETERANGAN_IKAN'] = keterangan_ikan
@@ -82,8 +85,7 @@ def buat_app():
         session['MINIMAL_ORDER_DALAM_KG'] = minimal_order_dalam_Kg
         session['HARGA_PER_KG'] = harga_per_Kg
         session['ID_IKAN'] = id_ikan
-
-
+        session['PESAN_BERAPA_KG'] = pesan_berapa_kg
 
         if request.method == "get":
             return render_template("form_data_pembeli.html")
@@ -95,7 +97,7 @@ def buat_app():
 
 
     @app.route('/form_pemesan', methods = ["GET", "POST"])
-    def form_pemesan():
+    def form_pemesan(status_pembayaran="pending"):
 
         nama_ikan = session['NAMA_IKAN']
         keterangan_ikan = session['KETERANGAN_IKAN']
@@ -103,6 +105,10 @@ def buat_app():
         minimal_order_dalam_Kg = session['MINIMAL_ORDER_DALAM_KG']
         harga_per_Kg = session['HARGA_PER_KG']
         id_ikan = session['ID_IKAN']
+        pesan_berapa_kg = ['PESAN_BERAPA_KG']
+        total_pesan = request.args.get('pesan_berapa_kg')
+        harga_total_pesanan = int(total_pesan) * harga_per_Kg
+        session['HARGA_TOTAL_PESANAN'] = harga_total_pesanan
 
         if request.method == 'POST':
             
@@ -110,16 +116,23 @@ def buat_app():
             no_hp_or_wa = request.form.get('no_hp_or_wa')
             alamat_lengkap = request.form.get('alamat_lengkap')
 
+            import time
+            tanggal_pemesanan = time.strftime("%d/%m/%Y")
+            # tanggal_pemesanan_untuk_admin = time.strftime("%Y-%m-%d %H:%M:%S")
             tanggal_ingin_dikirim = request.form.get('tanggal_ingin_dikirim')
 
-            id_ikan = session['ID_IKAN']
+            ikan_id = session['ID_IKAN']
             nama_ikan = session['NAMA_IKAN']
             keterangan_ikan = session['KETERANGAN_IKAN']
             berat_ikan_dalam_Kg = session['BERAT_IKAN_DALAM_KG']
             minimal_order_dalam_Kg = session['MINIMAL_ORDER_DALAM_KG']
             harga_per_Kg = session['HARGA_PER_KG']
+            harga_total_pesanan = session['HARGA_TOTAL_PESANAN']
 
-            insert_to_db = Pembeli(nama_pemesan, no_hp_or_wa, alamat_lengkap, nama_ikan, jum)
+            insert_to_db = Pembeli(ikan_id, nama_pemesan, no_hp_or_wa, alamat_lengkap, nama_ikan, pesan_berapa_kg,
+                                   harga_total_pesanan, tanggal_pemesanan, tanggal_ingin_dikirim)
+            db.session.add(insert_to_db)
+            db.session.commit()
 
             return render_template('invoice.html')
         return render_template("form_data_pembeli.html")

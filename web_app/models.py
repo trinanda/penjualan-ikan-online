@@ -47,7 +47,7 @@ class Pembeli(db.Model):
     CONFIRMED = "confirmed"
     REJECTED = "rejected"
 
-    status = db.Column(db.Enum(PENDING, CONFIRMED, REJECTED, name='status', default=PENDING))
+    status_pembayaran = db.Column(db.Enum(PENDING, CONFIRMED, REJECTED, name='status_pembayaran', default=PENDING))
 
     def __init__(self, id_ikan, nomor_pembeli, nomor_telepon, nama_pembeli, nama_ikan_yang_dipesan,
                  jumlah_pesanan, harga_total_pesanan, tanggal_pemesanan, status_pembayaran):
