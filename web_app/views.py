@@ -14,6 +14,8 @@ from wtforms.widgets import TextArea
 
 
 class ViewPembeli(ModelView):
+    column_list = ('ikan_id', 'kode_pembeli', 'nomor_telepon', 'nama_pembeli', 'alamat_pembeli',
+                   'nama_ikan_yang_dipesan', 'jumlah_pesanan', 'harga_total_pesanan', 'tanggal_pemesanan', 'status_pembayaran')
     pass
 
 
@@ -61,6 +63,8 @@ def del_image(mapper, connection, target):
 # Administrative views
 class ViewIkan(ModelView):
     form_overrides = dict(keterangan_kamar=CKEditorField)
+    column_list = ('id_ikan', 'nama_ikan', 'keterangan_ikan', 'berat_ikan_dalam_Kg', 'minimal_order_dalam_Kg',
+                   'harga_per_Kg', 'foto_ikan')
     create_template = 'admin/ckeditor.html'
     edit_template = 'admin/ckeditor.html'
     # column_list = ('nama_kamar', 'foto_ikan', 'harga_kamar', 'kamar_tersedia')

@@ -3,12 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9dc81b44-62d9-4887-91b2-54a3ab9045c9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/bc7a3cb3e484_inisialisasi_database.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/72c712719082_inisialisasi_database.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web_app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_app/templates/detail_ikan.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/templates/detail_ikan.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_app/templates/form_data_pembeli.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/templates/form_data_pembeli.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_app/templates/invoice.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/templates/invoice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web_app/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="129" column="64" selection-start-line="129" selection-start-column="64" selection-end-line="129" selection-end-column="64" />
+            <state relative-caret-position="218">
+              <caret line="152" column="101" selection-start-line="152" selection-start-column="101" selection-end-line="152" selection-end-column="101" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -31,20 +31,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reset_migrations.sh" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/reset_migrations.sh">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web_app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="16" selection-start-line="5" selection-end-line="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="if_enum_migrations_error" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/migrations/if_enum_migrations_error">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="47" column="69" lean-forward="true" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="69" />
+            <state relative-caret-position="147">
+              <caret line="66" column="46" selection-start-line="66" selection-start-column="46" selection-end-line="66" selection-end-column="46" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -52,21 +46,8 @@
       <file leaf-file-name="form_data_pembeli.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web_app/templates/form_data_pembeli.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="49" column="48" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ikan.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web_app/templates/ikan.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#7;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="292">
+              <caret line="81" column="83" selection-start-line="81" selection-start-column="83" selection-end-line="81" selection-end-column="83" />
             </state>
           </provider>
         </entry>
@@ -74,8 +55,8 @@
       <file leaf-file-name="invoice.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web_app/templates/invoice.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="45" column="46" selection-start-line="45" selection-start-column="46" selection-end-line="45" selection-end-column="46" />
+            <state relative-caret-position="178">
+              <caret line="15" column="38" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -83,11 +64,32 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web_app/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="869">
-              <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+            <state relative-caret-position="158">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="13" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="368a5c2a8572_inisialisasi_database.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/migrations/versions/368a5c2a8572_inisialisasi_database.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+              <folding>
+                <element signature="e#107#129#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="if_enum_migrations_error" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/migrations/if_enum_migrations_error">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -104,15 +106,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>//fonts.googleapis.com/css?family=Hind:400,500,300,600,700</find>
-      <find>//fonts.googleapis.com/css?family=Oswald:400,700,300</find>
-      <find>addEventListener(&quot;load&quot;, function()</find>
-      <find>move-top.js</find>
-      <find>easing.js</find>
-      <find>$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);</find>
-      <find>jquery.flexslider.js</find>
-      <find>flexslider</find>
-      <find>$('.flexslider').flexslider({</find>
       <find>imagezoom.js</find>
       <find>simpleCart</find>
       <find>bootstrap.min.js</find>
@@ -131,9 +124,18 @@
       <find>pembaran</find>
       <find>status</find>
       <find>ikan_id</find>
-      <find>status_pembayaran</find>
       <find>session['NAMA_IKAN'] = nama_ikan</find>
       <find>HARGA_TOTAL_PESANAN</find>
+      <find>status_pembayaran</find>
+      <find>alamat</find>
+      <find>tangg</find>
+      <find>PESAN_BERAPA_KG</find>
+      <find>pesan_berapa_kg</find>
+      <find>jumlah_pesanan</find>
+      <find>harga_total_pesanan</find>
+      <find>nama_pemesan</find>
+      <find>pemesan</find>
+      <find>ikan</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -157,7 +159,6 @@
         <option value="$PROJECT_DIR$/web_app/templates/pembayaran.html" />
         <option value="$PROJECT_DIR$/migrations/versions/7404816eb00a_inisialisasi_database.py" />
         <option value="$PROJECT_DIR$/migrations/versions/1f839177e755_inisialisasi_database.py" />
-        <option value="$PROJECT_DIR$/web_app/views.py" />
         <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/0000-percobaan/flask-method-request/index.html" />
         <option value="$PROJECT_DIR$/0000-percobaan/flask-method-request/templates/page.html" />
@@ -171,13 +172,15 @@
         <option value="$PROJECT_DIR$/migrations/versions/bc7a3cb3e484_inisialisasi_database.py" />
         <option value="$PROJECT_DIR$/migrations/if_enum_migrations_error" />
         <option value="$PROJECT_DIR$/web_app/templates/ikan.html" />
-        <option value="$PROJECT_DIR$/web_app/templates/invoice.html" />
-        <option value="$PROJECT_DIR$/web_app/templates/form_data_pembeli.html" />
         <option value="$PROJECT_DIR$/web_app/templates/detail_ikan.html" />
-        <option value="$PROJECT_DIR$/web_app/models.py" />
         <option value="$PROJECT_DIR$/migrations/versions/f03e41f832b6_inisialisasi_database.py" />
         <option value="$PROJECT_DIR$/migrations/versions/afeb3bdaf664_inisialisasi_database.py" />
+        <option value="$PROJECT_DIR$/web_app/templates/form_data_pembeli.html" />
+        <option value="$PROJECT_DIR$/web_app/templates/invoice.html" />
+        <option value="$PROJECT_DIR$/migrations/versions/368a5c2a8572_inisialisasi_database.py" />
+        <option value="$PROJECT_DIR$/web_app/models.py" />
         <option value="$PROJECT_DIR$/web_app/app.py" />
+        <option value="$PROJECT_DIR$/web_app/views.py" />
       </list>
     </option>
   </component>
@@ -210,6 +213,12 @@
               <item name="penjualan-ikan-online-irwan-santosa" type="b2602c69:ProjectViewProjectNode" />
               <item name="penjualan-ikan-online-irwan-santosa" type="462c0819:PsiDirectoryNode" />
               <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="penjualan-ikan-online-irwan-santosa" type="b2602c69:ProjectViewProjectNode" />
+              <item name="penjualan-ikan-online-irwan-santosa" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+              <item name="versions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="penjualan-ikan-online-irwan-santosa" type="b2602c69:ProjectViewProjectNode" />
@@ -306,17 +315,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="29" y="795" width="1366" height="741" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2004471" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.26174498" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.2852349" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.40939596" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.5201342" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -325,7 +334,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.26174498" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -357,20 +365,16 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/web_app/views.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="30">
-            <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -446,13 +450,6 @@
     <entry file="file://$PROJECT_DIR$/migrations/versions/1f839177e755_inisialisasi_database.py" />
     <entry file="file://$PROJECT_DIR$/migrations/versions/989f345cdee9_inisialisasi_database.py" />
     <entry file="file://$PROJECT_DIR$/web_app/templates/admin/index.html" />
-    <entry file="file://$PROJECT_DIR$/web_app/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/0000-percobaan/flask-method-request/templates/page.html" />
     <entry file="file://$PROJECT_DIR$/0000-percobaan/flask-method-request/templates/index.html" />
     <entry file="file://$PROJECT_DIR$/0000-percobaan/flask-method-request/templates/response.html">
@@ -510,34 +507,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web_app/templates/ikan.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#7;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_app/templates/invoice.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="46" selection-start-line="45" selection-start-column="46" selection-end-line="45" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_app/templates/detail_ikan.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="57" column="64" lean-forward="true" selection-start-line="57" selection-start-column="64" selection-end-line="57" selection-end-column="79" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/migrations/versions/f03e41f832b6_inisialisasi_database.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -545,13 +514,6 @@
           <folding>
             <element signature="e#119#141#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/reset_migrations.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="16" selection-start-line="5" selection-end-line="6" />
         </state>
       </provider>
     </entry>
@@ -565,36 +527,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/migrations/if_enum_migrations_error">
+    <entry file="file://$PROJECT_DIR$/web_app/templates/ikan.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="47" column="69" lean-forward="true" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="69" />
+        <state relative-caret-position="336">
+          <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#7;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web_app/models.py">
+    <entry file="file://$PROJECT_DIR$/scripts/reset_migrations.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="869">
-          <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/templates/detail_ikan.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="60" column="74" selection-start-line="60" selection-start-column="67" selection-end-line="60" selection-end-column="74" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web_app/templates/form_data_pembeli.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="49" column="48" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
+        <state relative-caret-position="292">
+          <caret line="81" column="83" selection-start-line="81" selection-start-column="83" selection-end-line="81" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/templates/invoice.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="15" column="38" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/if_enum_migrations_error">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/versions/368a5c2a8572_inisialisasi_database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#107#129#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web_app/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="129" column="64" selection-start-line="129" selection-start-column="64" selection-end-line="129" selection-end-column="64" />
+        <state relative-caret-position="218">
+          <caret line="152" column="101" selection-start-line="152" selection-start-column="101" selection-end-line="152" selection-end-column="101" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="66" column="46" selection-start-line="66" selection-start-column="46" selection-end-line="66" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>

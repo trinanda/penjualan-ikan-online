@@ -11,9 +11,9 @@
 		<header>
 			<h1>Invoice</h1>
 			<address contenteditable>
-				<p>Irwan Santosa</p>
-				<p>Sungai Naniang<br>Bukit Barisan, 26255</p>
-				<p>+6282285250554</p>
+				<p>{{ NAMA_PEMBELI }}</p>
+				<p>{{ ALAMAT_PEMBELI }}</p>
+				<p>{{ NOMOR_HP_PEMBELI }}</p>
 			</address>
 			<!--<span><img alt="" src="http://www.jonathantneal.com/examples/invoice/logo.png"><input type="file" accept="image/*"></span>-->
 		</header>
@@ -22,11 +22,11 @@
 			<table class="meta">
 				<tr>
 					<th><span contenteditable>Invoice </span></th>
-					<td><span contenteditable>#I4K3N13FD</span></td>
+					<td><span contenteditable>{{ KODE_INVOICE }}</span></td>
 				</tr>
 				<tr>
 					<th><span contenteditable>Tanggal</span></th>
-					<td><span contenteditable>January 1, 2012</span></td>
+					<td><span contenteditable>{{ TANGGAL_PESANAN }}</span></td>
 				</tr>
 			</table>
 			<!--<table class="inventory">-->
@@ -35,15 +35,15 @@
 					<tr>
 						<th><span contenteditable>Ikan</span></th>
 						<th><span contenteditable>Jumlah</span></th>
-						<th><span contenteditable>Price</span></th>
+						<th><span contenteditable>Harga</span></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<!--<td><a class="cut">-</a><span contenteditable>Front End Consultation</span></td>-->
-						<td><a class="#"></a><span contenteditable>Mujair</span></td>
-						<td><span contenteditable>10 Kg</span></td>
-						<td><span data-prefix></span><span>Rp. 30.000,00</span></td>
+						<td><a class="#"></a><span contenteditable>{{ NAMA_IKAN }}</span></td>
+						<td><span contenteditable>{{ JUMLAH_PESANAN }} Kg</span></td>
+						<td><span data-prefix></span><span>Rp. {{ HARGA_SATU_IKAN }},00</span></td>
 					</tr>
 				</tbody>
 			</table>
@@ -51,7 +51,7 @@
 			<table class="balance">
 				<tr>
 					<th><span contenteditable>Total</span></th>
-					<td><span data-prefix></span><span>Rp. 300.000,00</span></td>
+					<td><span data-prefix></span><span>Rp.{{ HARGA_TOTAL }},00</span></td>
 				</tr>
 			</table>
 		</article>
