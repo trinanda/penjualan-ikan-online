@@ -1,13 +1,15 @@
 import sys, os
 
-from flask_admin import Admin
+import flask_admin
+from flask_security import SQLAlchemyUserDatastore, Security
 
 sys.path.append(os.getcwd() + '/web_app')
+from flask_admin import Admin, helpers as admin_helpers
 
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, url_for
 
-from models import db, Ikan, Pembeli
-from views import ViewIkan, ViewPembeli
+from models import db, Ikan, Pembeli, User, Role
+from views import ViewIkan, ViewPembeli, MyModelView
 
 
 def buat_app():
@@ -19,9 +21,29 @@ def buat_app():
 
     db.init_app(app)
 
-    admin = Admin(app, name='Admin', template_mode='bootstrap3')
+    # Setup Flask-Security
+    user_datastore = SQLAlchemyUserDatastore(db, User, Role)
+    security = Security(app, user_datastore)
+
+    # Create admin
+    admin = flask_admin.Admin(app,'Admin Dashboard',base_template='my_master.html',template_mode='bootstrap3')
+
+    # admin = Admin(app, name='Admin', template_mode='bootstrap3')
     admin.add_view(ViewIkan(Ikan, db.session))
     admin.add_view(ViewPembeli(Pembeli, db.session))
+    admin.add_view(MyModelView(Role, db.session))
+    admin.add_view(MyModelView(User, db.session))
+
+    # define a context processor for merging flask-admin's template context into the
+    # flask-security views.
+    @security.context_processor
+    def security_context_processor():
+        return dict(
+            admin_base_template=admin.base_template,
+            admin_view=admin.index_view,
+            h=admin_helpers,
+            get_url=url_for
+        )
 
     @app.route('/', methods=['POST','GET'])
     def ikan(fish=None, id_ikan=None):
