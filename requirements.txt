@@ -5,5 +5,5 @@ flask-sqlalchemy            ==   2.3.2
 alembic                     ==   0.9.9
 flask-admin                 ==   1.5.1
 flask-wtf                   ==   0.14.2
-Flask-Security>=1.7.5
-pillow==2.9.0
+Flask-Security              >=   1.7.5
+pillow                      ==   2.9.0
