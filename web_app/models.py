@@ -35,7 +35,7 @@ class Pembeli(db.Model):
     __tablename__ = 'pembeli'
     kode_pembeli = Column(String, primary_key=True, unique=True)
     nama_pembeli = Column(String)
-    nomor_telepon = Column(Numeric)
+    nomor_telepon = Column(String)
     alamat_pembeli = Column(String)
     nama_ikan_yang_dipesan = Column(String)
     jumlah_pesanan = Column(String)
