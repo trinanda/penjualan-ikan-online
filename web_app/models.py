@@ -5,6 +5,37 @@ from sqlalchemy import Column, String, Integer, Enum, Numeric, Unicode, ForeignK
 db = SQLAlchemy()
 
 
+roles_users = db.Table(
+    'roles_users',
+    db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
+    db.Column('role_id', db.Integer(), db.ForeignKey('role.id'))
+)
+
+
+class Role(db.Model, RoleMixin):
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(80), unique=True)
+    description = db.Column(db.String(255))
+
+    def __str__(self):
+        return self.name
+
+
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    nama_toko = db.Column(db.String(255))
+    email = db.Column(db.String(255), unique=True)
+    password = db.Column(db.String(255))
+    lokasi = Column(String)
+    active = db.Column(db.Boolean())
+    confirmed_at = db.Column(db.DateTime())
+    roles = db.relationship('Role', secondary=roles_users,
+                            backref=db.backref('users', lazy='dynamic'))
+
+    def __str__(self):
+        return self.email
+
+
 class Ikan(db.Model):
     __tablename__ = 'ikan'
     id_ikan = Column(Integer, primary_key=True)
@@ -15,6 +46,7 @@ class Ikan(db.Model):
     harga_per_Kg = Column(Integer)
     foto_ikan = Column(Unicode(128))
 
+    user_id = Column(Integer, ForeignKey(User.id))
 
     TERSEDIA = 'tersedia'
     STOCK_HABIS = 'stock habis'
@@ -62,36 +94,4 @@ class Pembeli(db.Model):
         self.harga_total_pesanan = harga_total_pesanan
         self.tanggal_pemesanan = tanggal_pemesanan
         self.status_pembayaran = status
-
-
-
-roles_users = db.Table(
-    'roles_users',
-    db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
-    db.Column('role_id', db.Integer(), db.ForeignKey('role.id'))
-)
-
-
-class Role(db.Model, RoleMixin):
-    id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.String(80), unique=True)
-    description = db.Column(db.String(255))
-
-    def __str__(self):
-        return self.name
-
-
-class User(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    nama_toko = db.Column(db.String(255))
-    email = db.Column(db.String(255), unique=True)
-    password = db.Column(db.String(255))
-    lokasi = Column(String)
-    active = db.Column(db.Boolean())
-    confirmed_at = db.Column(db.DateTime())
-    roles = db.relationship('Role', secondary=roles_users,
-                            backref=db.backref('users', lazy='dynamic'))
-
-    def __str__(self):
-        return self.email
 
