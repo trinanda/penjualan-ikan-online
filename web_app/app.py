@@ -1,19 +1,14 @@
 import sys, os
-
 import flask_admin
 from flask_security import SQLAlchemyUserDatastore, Security
-
 sys.path.append(os.getcwd() + '/web_app')
 from flask_admin import Admin, helpers as admin_helpers
-
 from flask import Flask, render_template, request, session, url_for
-
 from models import db, Ikan, Pembeli, User, Role
 from views import ViewIkan, ViewPembeli, MyModelView
 
 
 def buat_app():
-
 
     app = Flask(__name__, static_folder='files')
 
@@ -73,15 +68,8 @@ def buat_app():
             fish_foto = ikan.query.first()
             fish_foto = ikan.foto_ikan
 
-        session['ID_IKAN'] = id_ikan
-        session['NAMA_IKAN'] = nama_ikan
-        session['KETERANGAN_IKAN'] = keterangan_ikan
-        session['BERAT_IKAN_DALAM_KG'] = berat_ikan_dalam_Kg
-        session['MINIMAL_ORDER_DALAM_KG'] = minimal_order_dalam_Kg
-        session['HARGA_PER_KG'] = harga_per_Kg
-        # session['FOTO_IKAN'] = fish_foto
 
-        if request.method == "get":
+        if request.method == "POST":
             return render_template('detail_ikan.html')
         else:
             pass
@@ -91,15 +79,25 @@ def buat_app():
     @app.route('/detail_ikan/<id_ikan>', methods = ["GET", "POST"])
     def detail_ikan(id_ikan=None):
 
-        nama_ikan = request.args.get('nama_ikan')
-        keterangan_ikan = request.args.get('keterangan_ikan')
-        berat_ikan_dalam_Kg = request.args.get('berat_ikan_dalam_Kg')
-        minimal_order_dalam_Kg = request.args.get('minimal_order_dalam_Kg')
-        harga_per_Kg = request.args.get('harga_per_Kg')
-        harga_per_Kg = int(harga_per_Kg)
+
         foto_ikan = request.args.get('foto_ikan')
 
-        pesan_berapa_kg = request.form.get('pesan_berapa_kg')
+        id_ikan = Ikan.query.filter_by(id_ikan=id_ikan).first()
+        id_ikan = id_ikan.id_ikan
+        nama_ikan = Ikan.query.filter_by(id_ikan=id_ikan).first()
+        nama_ikan = nama_ikan.nama_ikan
+        keterangan_ikan = Ikan.query.filter_by(id_ikan=id_ikan).first()
+        keterangan_ikan = keterangan_ikan.keterangan_ikan
+        berat_ikan_dalam_Kg = Ikan.query.filter_by(id_ikan=id_ikan).first()
+        berat_ikan_dalam_Kg = berat_ikan_dalam_Kg.berat_ikan_dalam_Kg
+        minimal_order_dalam_Kg = Ikan.query.filter_by(id_ikan=id_ikan).first()
+        minimal_order_dalam_Kg = minimal_order_dalam_Kg.minimal_order_dalam_Kg
+        harga_per_Kg = Ikan.query.filter_by(id_ikan=id_ikan).first()
+        harga_per_Kg = harga_per_Kg.harga_per_Kg
+
+        if request.method == "get":
+            pesan_berapa_kg = request.form.get('pesan_berapa_kg')
+            return render_template("form_data_pembeli.html")
 
         session['NAMA_IKAN'] = nama_ikan
         session['KETERANGAN_IKAN'] = keterangan_ikan
@@ -107,33 +105,26 @@ def buat_app():
         session['MINIMAL_ORDER_DALAM_KG'] = minimal_order_dalam_Kg
         session['HARGA_PER_KG'] = harga_per_Kg
         session['ID_IKAN'] = id_ikan
-        session['PESAN_BERAPA_KG'] = pesan_berapa_kg
 
-        if request.method == "get":
-            return render_template("form_data_pembeli.html")
 
-        return render_template("detail_ikan.html", ID_IKAN=id_ikan,
-                               NAMA_IKAN=nama_ikan, BERAT_IKAN= berat_ikan_dalam_Kg, HARGA_IKAN=harga_per_Kg,
-                               KETERANGAN_IKAN=keterangan_ikan, MINIMAL_ORDER=minimal_order_dalam_Kg, FOTO_IKAN=foto_ikan)
+
+        return render_template("detail_ikan.html", ID_IKAN=id_ikan, NAMA_IKAN=nama_ikan, BERAT_IKAN= berat_ikan_dalam_Kg,
+                               HARGA_IKAN=harga_per_Kg, KETERANGAN_IKAN=keterangan_ikan, MINIMAL_ORDER=minimal_order_dalam_Kg,
+                               FOTO_IKAN=foto_ikan)
 
 
 
     @app.route('/form_pemesan', methods = ["GET", "POST"])
     def form_pemesan(status_pembayarans="pending"):
 
+        if 'HARGA_PER_KG' in session.keys():
+            harga_per_Kg = session['HARGA_PER_KG']
+        else:
+            harga_per_Kg = None
+
         pesan_berapa_kg = request.args.get('pesan_berapa_kg')
-
-        nama_ikan = session['NAMA_IKAN']
-        keterangan_ikan = session['KETERANGAN_IKAN']
-        berat_ikan_dalam_Kg = session['BERAT_IKAN_DALAM_KG']
-        minimal_order_dalam_Kg = session['MINIMAL_ORDER_DALAM_KG']
-        harga_per_Kg = session['HARGA_PER_KG']
-        id_ikan = session['ID_IKAN']
-        session['PESAN_BERAPA_KG'] = pesan_berapa_kg
-        total_pesan = request.args.get('pesan_berapa_kg')
-        harga_total_pesanan = int(total_pesan) * harga_per_Kg
+        harga_total_pesanan = int(harga_per_Kg) * int(pesan_berapa_kg)
         session['HARGA_TOTAL_PESANAN'] = harga_total_pesanan
-
 
         if request.method == 'POST':
 
@@ -157,10 +148,9 @@ def buat_app():
 
             ikan_id = session['ID_IKAN']
             nama_ikan = session['NAMA_IKAN']
+            pesan_berapa_kg = pesan_berapa_kg
+            session['PESAN_BERAPA_KG'] = pesan_berapa_kg
             pesan_berapa_kg = session['PESAN_BERAPA_KG']
-            keterangan_ikan = session['KETERANGAN_IKAN']
-            berat_ikan_dalam_Kg = session['BERAT_IKAN_DALAM_KG']
-            minimal_order_dalam_Kg = session['MINIMAL_ORDER_DALAM_KG']
             harga_per_Kg = session['HARGA_PER_KG']
             harga_total_pesanan = session['HARGA_TOTAL_PESANAN']
             status_pembayaran = status_pembayarans
@@ -181,5 +171,10 @@ def buat_app():
     @app.route('/invoice')
     def invoice():
         return render_template("invoice.html")
+
+    @app.route('/nearby')
+    def nearby():
+
+        return render_template("nearby_places.html")
 
     return app

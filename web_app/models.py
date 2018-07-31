@@ -25,8 +25,8 @@ class Ikan(db.Model):
     kondisi_ikan = Column(Enum(FROZEN, FRESH, name='kondisi_ikan', default=FRESH))
 
 
-    def __unicode__(self):
-        return self.nama_ikan
+    def __repr__(self):
+        return '{}'.format(self.nama_ikan)
 
     urutan_ikan_dalam_tampilan_halaman = Column(Integer)
 
@@ -83,10 +83,10 @@ class Role(db.Model, RoleMixin):
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(255))
-    last_name = db.Column(db.String(255))
+    nama_toko = db.Column(db.String(255))
     email = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(255))
+    lokasi = Column(String)
     active = db.Column(db.Boolean())
     confirmed_at = db.Column(db.DateTime())
     roles = db.relationship('Role', secondary=roles_users,

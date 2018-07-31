@@ -68,7 +68,7 @@ class AdminAkses(ModelView):
 
 
 class ViewPembeli(AdminAkses):
-    column_list = ('ikan_id', 'kode_pembeli', 'nomor_telepon', 'nama_pembeli', 'alamat_pembeli',
+    column_list = ('kode_pembeli', 'nama_pembeli', 'nomor_telepon', 'alamat_pembeli',
                    'nama_ikan_yang_dipesan', 'jumlah_pesanan', 'harga_total_pesanan', 'tanggal_pemesanan', 'status_pembayaran')
     pass
 

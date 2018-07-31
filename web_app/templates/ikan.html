@@ -23,13 +23,13 @@
 						</div>
 
 						<!--<form action="http://localhost:9999/detail_ikan/{{FISH.id_ikan}}" method="get">-->
-						<form action="http://localhost:9999/detail_ikan/{{FISH.id_ikan}}" method="get">
+						<form action="http://127.0.0.1:9999/detail_ikan/{{FISH.id_ikan}}" method="get">
 							<input name="id_ikan" type="hidden" value="{{ FISH.id_ikan }}">
-							<input name="nama_ikan" type="hidden" value="{{ FISH.nama_ikan }}">
-							<input name="keterangan_ikan" type="hidden" value="{{ FISH.keterangan_ikan }}">
-							<input name="berat_ikan_dalam_Kg" type="hidden" value="{{ FISH.berat_ikan_dalam_Kg }}">
-							<input name="minimal_order_dalam_Kg" type="hidden" value="{{ FISH.minimal_order_dalam_Kg }}">
-							<input name="harga_per_Kg" type="hidden" value="{{ FISH.harga_per_Kg }}">
+							<!--<input name="nama_ikan" type="hidden" value="{{ FISH.nama_ikan }}">-->
+							<!--<input name="keterangan_ikan" type="hidden" value="{{ FISH.keterangan_ikan }}">-->
+							<!--<input name="berat_ikan_dalam_Kg" type="hidden" value="{{ FISH.berat_ikan_dalam_Kg }}">-->
+							<!--<input name="minimal_order_dalam_Kg" type="hidden" value="{{ FISH.minimal_order_dalam_Kg }}">-->
+							<!--<input name="harga_per_Kg" type="hidden" value="{{ FISH.harga_per_Kg }}">-->
 							<input name="foto_ikan" type="hidden" value="http://127.0.0.1:9999/files/{{ FISH.foto_ikan }}">
 							<input type="submit" value="Lihat detail ikan" class="btn btn-warning" style="width: 143px;" align="middle">
 						</form>
