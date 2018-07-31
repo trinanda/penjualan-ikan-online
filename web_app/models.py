@@ -23,10 +23,11 @@ class Role(db.Model, RoleMixin):
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    nama_toko = db.Column(db.String(255))
+    nama_toko = db.Column(db.String(255), unique=True)
     email = db.Column(db.String(255), unique=True)
+    nomor_telepon = db.Column(db.VARCHAR(255), unique=True)
     password = db.Column(db.String(255))
-    lokasi = Column(String)
+    lokasi_penjualan = Column(db.VARCHAR, unique=True)
     active = db.Column(db.Boolean())
     confirmed_at = db.Column(db.DateTime())
     roles = db.relationship('Role', secondary=roles_users,
@@ -34,6 +35,17 @@ class User(db.Model, UserMixin):
 
     def __str__(self):
         return self.email
+
+    try:
+        def __init__(self, nama_toko, email, nomor_telepon, password, lokasi_penjualan):
+            self.nama_toko = nama_toko
+            self.email = email
+            self.nomor_telepon = nomor_telepon
+            self.password = password
+            self.email = email
+            self.lokasi_penjualan = lokasi_penjualan
+    except:
+        pass
 
 
 class Ikan(db.Model):
@@ -48,6 +60,8 @@ class Ikan(db.Model):
 
     user_id = Column(Integer, ForeignKey(User.id))
 
+    is_public = db.Column(db.Boolean(), nullable=False)
+
     TERSEDIA = 'tersedia'
     STOCK_HABIS = 'stock habis'
     ketersediaan = Column(Enum(TERSEDIA, STOCK_HABIS, name='Ketersediaan', default=TERSEDIA))
@@ -59,6 +73,18 @@ class Ikan(db.Model):
 
     def __repr__(self):
         return '{}'.format(self.nama_ikan)
+
+    def __init__(self, nama_ikan, keterangan_ikan, berat_ikan_dalam_Kg, harga_per_Kg,
+                 minimal_order_dalam_Kg, ketersediaan, kondisi_ikan, user_id, is_public):
+        self.nama_ikan = nama_ikan
+        self.keterangan_ikan = keterangan_ikan
+        self.berat_ikan_dalam_Kg = berat_ikan_dalam_Kg
+        self.harga_per_Kg = harga_per_Kg
+        self.minimal_order_dalam_Kg = minimal_order_dalam_Kg
+        self.ketersediaan = ketersediaan
+        self.kondisi_ikan = kondisi_ikan
+        self.user_id = user_id
+        self.is_public = is_public
 
     urutan_ikan_dalam_tampilan_halaman = Column(Integer)
 

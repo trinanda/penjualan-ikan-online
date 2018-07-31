@@ -1,11 +1,16 @@
 import sys, os
 import flask_admin
+from flask_bootstrap import Bootstrap
+from flask_login import LoginManager, login_required, current_user
 from flask_security import SQLAlchemyUserDatastore, Security
+from flask_security.utils import verify_password, login_user, logout_user
+from werkzeug.utils import redirect
+
 sys.path.append(os.getcwd() + '/web_app')
 from flask_admin import Admin, helpers as admin_helpers
-from flask import Flask, render_template, request, session, url_for
+from flask import Flask, render_template, request, session, url_for, flash
 from models import db, Ikan, Pembeli, User, Role
-from views import ViewIkan, ViewPembeli, MyModelView
+from views import ViewIkan, ViewPembeli, MyModelView, RegisterFormView, LoginFormView, AddIkanForm, EditIkanForm
 
 
 def buat_app():
@@ -15,6 +20,11 @@ def buat_app():
     app.config.from_pyfile('settings.py')
 
     db.init_app(app)
+
+    bootstrap = Bootstrap(app)
+    login_manager = LoginManager()
+    login_manager.init_app(app)
+    login_manager.login_view = 'login'
 
     # Setup Flask-Security
     user_datastore = SQLAlchemyUserDatastore(db, User, Role)
@@ -43,7 +53,7 @@ def buat_app():
     @app.route('/', methods=['POST','GET'])
     def ikan(fish=None, id_ikan=None):
 
-        ikan = Ikan()
+        ikan = Ikan('','','','','','','','','')
         #
         if fish is not None:
             ikan = Ikan.query.filter_by(nama_ikan=fish).first()
@@ -174,7 +184,148 @@ def buat_app():
 
     @app.route('/nearby')
     def nearby():
-
         return render_template("nearby_places.html")
+
+    @app.route('/signup', methods=['GET', 'POST'])
+    def signup():
+        form = RegisterFormView()
+
+        try:
+            if form.validate_on_submit():
+                hashed_password = form.password.data
+                new_user = User(nama_toko=form.nama_toko.data, email=form.email.data, nomor_telepon=form.nomor_telepon.data,
+                                password=hashed_password, lokasi_penjualan=form.lokasi_penjualan.data)
+                db.session.add(new_user)
+                db.session.commit()
+
+                return "<h1>User telah berhasil dibuat, silahkan coba untuk login \
+                           <a href='http://127.0.0.1:9999/login'>Login</a></h1>"
+                # return '<h1>' + form.username.data + ' ' + form.email.data + ' ' + form.password.data + '</h1>'
+        except:
+            return """<html><h2> Data yang di inputkan harus unique, sepertinya salah satu data yang Anda \
+                        Masukan sudah terdaftar, Mohon ulangi input data dengan teliti...!!!  <br>
+                       <a href='http://127.0.0.1:9999/signup'>Ulangi Input Data</a></h2></html>"""
+
+        return render_template('signup.html', form=form)
+
+    @app.route('/login', methods=['GET', 'POST'])
+    def login():
+        form = LoginFormView(request.form)
+        if request.method == 'POST':
+            if form.validate_on_submit():
+                session['email'] = request.form['email']
+                user = User.query.filter_by(email=form.email.data).first()
+                if verify_password(user.password, form.password.data):
+                    user.authenticated = True
+                    db.session.add(user)
+                    db.session.commit()
+                    login_user(user)
+                    login_user(user, remember=form.remember.data)
+                    return redirect(url_for('dashboard'))
+                else:
+                    return '<h1>Invalid username or password</h1>'
+
+        return render_template('login.html', form=form)
+
+    @app.route('/dashboard')
+    @login_required
+    def dashboard():
+        if 'email' in session:
+            nama_toko = current_user.nama_toko
+            all_user_data = Ikan.query.filter_by(user_id=current_user.id)
+            return render_template('dashboard.html', ikan=all_user_data, NAMA_TOKO=nama_toko)
+        else:
+            return redirect(url_for('index'))
+
+    @app.route('/user_profile')
+    @login_required
+    def user_profile():
+        return render_template('user_profile.html')
+
+    @app.route('/add', methods=['GET', 'POST'])
+    @login_required
+    def tambah_ikan():
+        form = AddIkanForm(request.form)
+        if request.method == 'POST':
+            if form.validate_on_submit():
+                new_ikan = Ikan(form.nama_ikan.data, form.keterangan_ikan.data, form.berat_ikan_dalam_Kg.data,
+                                form.harga_per_Kg.data, form.minimal_order_dalam_Kg.data, form.ketersediaan.data,
+                                form.kondisi_ikan.data, current_user.id, False)
+                db.session.add(new_ikan)
+                db.session.commit()
+                return redirect(url_for('dashboard'))
+
+        return render_template('tambah_ikan.html', form=form)
+
+    @app.route('/ikan_delete/<ikan_id>')
+    def ikan_delete(ikan_id):
+        data = db.session.query(Ikan, User).join(User).filter(Ikan.id_ikan == ikan_id).first()
+        if data.Ikan.is_public:
+            return render_template('ikan_detail.html', ikan=data)
+        else:
+            try:
+                if current_user.is_authenticated and data.Ikan.user_id == current_user.id:
+                    data = Ikan.query.filter_by(id_ikan=ikan_id).first()
+                    db.session.delete(data)
+                    db.session.commit()
+            except:
+                return 'Tidak bisa delete data ikan, karena ikan sedang digunakan'
+        return redirect(url_for('dashboard'))
+
+    @app.route('/ikan_edit/<ikan_id>', methods=['GET', 'POST'])
+    def ikan_edit(ikan_id):
+        nama_toko = current_user.nama_toko
+        data = db.session.query(Ikan, User).join(User).filter(Ikan.id_ikan == ikan_id).first()
+        form = EditIkanForm(request.form)
+        if request.method == 'POST':
+            if form.validate_on_submit():
+                if current_user.is_authenticated and data.Ikan.user_id == current_user.id:
+                    data = Ikan.query.filter_by(id_ikan=ikan_id).first()
+                    new_nama_ikan = form.nama_ikan.data
+                    new_keterangan_ikan = form.keterangan_ikan.data
+                    new_berat_ikan_dalam_Kg = form.berat_ikan_dalam_Kg.data
+                    new_harga_per_Kg = form.harga_per_Kg.data
+                    new_minimal_order_dalam_Kg = form.minimal_order_dalam_Kg.data
+                    new_stock = form.ketersediaan.data
+                    new_kondisi = form.kondisi_ikan.data
+                    try:
+                        data.nama_ikan = new_nama_ikan
+                        data.keterangan_ikan = new_keterangan_ikan
+                        data.berat_ikan_dalam_Kg = new_berat_ikan_dalam_Kg
+                        data.harga_per_Kg = new_harga_per_Kg
+                        data.minimal_order_dalam_Kg = new_minimal_order_dalam_Kg
+                        data.stock = new_stock
+                        data.kondisi = new_kondisi
+
+                        db.session.commit()
+
+                    except Exception as e:
+                        return {'error': str(e)}
+                return redirect(url_for('dashboard'))
+
+        return render_template('edit_ikan.html', form=form, ikan=data, NAMA_TOKO=nama_toko)
+
+
+    @app.route('/ikan/<ikan_id>')
+    def ikan_details(ikan_id):
+        ikan_with_user = db.session.query(Ikan, User).join(User).filter(Ikan.id_ikan == ikan_id).first()
+        if ikan_with_user is not None:
+            if ikan_with_user.Ikan.is_public:
+                return render_template('ikan_detail.html', ikan=ikan_with_user)
+            else:
+                if current_user.is_authenticated and ikan_with_user.Ikan.user_id == current_user.id:
+                    return render_template('ikan_detail.html', ikan=ikan_with_user)
+                # else:
+                #    flash('Error! Incorrect permissions to access this mantan.', 'error')
+        else:
+            flash('Error! Recipe does not exist.', 'error')
+        return redirect(url_for('index'))
+
+    @app.route('/logout')
+    @login_required
+    def logout():
+        logout_user()
+        return redirect(url_for('ikan'))
+
 
     return app

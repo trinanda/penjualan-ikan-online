@@ -7,3 +7,5 @@ flask-admin                 ==   1.5.1
 flask-wtf                   ==   0.14.2
 Flask-Security              >=   1.7.5
 pillow                      ==   5.1.0
+Flask-Bootstrap             ==   3.3.7.1
+flask-login                 ==   0.4.0

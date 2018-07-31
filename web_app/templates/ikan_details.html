@@ -1,0 +1,42 @@
+{% extends "theme.html" %}
+{% block body %}
+
+<div class="user-profile">
+  <div class="page-header">
+    <h2>ID : {{ Ikan.ikan.id_ikan }}</h2>
+  </div>
+
+  <div class="row">
+
+     <div class="panel panel-primary">
+        <div class="panel-heading">Nama Ikan</div>
+        <div class="panel-body">{{ ikan.Ikan.nama_toko }}</div>
+
+      </div>
+
+      <div class="panel panel-primary">
+        <div class="panel-heading">Nama Ikan</div>
+        <div class="panel-body">{{ ikan.Ikan.nama_ikan }}</div>
+
+      </div>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">Keterangan Ikan</div>
+      <div class="panel-body">{{ ikan.Ikan.keterangan_ikan }}</div>
+    </div>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">Harga Ikan</div>
+      <div class="panel-body">Rp.{{ ikan.Ikan.harga_ikan }},00</div>
+    </div>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">Status Ikan</div>
+      <div class="panel-body">{{ ikan.Ikan.status }}</div>
+    </div>
+
+
+  </div>
+</div>`
+
+{% endblock %}

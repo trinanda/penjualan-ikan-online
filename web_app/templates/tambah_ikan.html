@@ -1,0 +1,49 @@
+{% extends "theme.html" %}
+
+{% block title %}
+	{{ super() }}
+    Tambah Ikan
+{% endblock %}
+
+{% block body %}
+    {{ super() }}
+    <div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">Halaman Dashboard</h2>
+    </div>
+	</div>
+	<div class="row">
+	    <div class="col-lg-12">
+	        <div class="panel panel-info">
+	            <div class="panel-heading">
+
+	            </div>
+	            <!-- /.panel-heading -->
+	            <div class="panel-body">
+
+                    <div class="page-header">
+                        <h2>Tambahkan Ikan</h2>
+                    </div>
+
+                    <form action="{{url_for('tambah_ikan')}}" method="post" enctype="multipart/form-data">
+                        {{ form.csrf_token }}
+                        {{ form.nama_ikan(placeholder="Namar Ikan") }}
+                        {{ form.keterangan_ikan(placeholder="Keterangan Ikan") }}
+                        {{ form.berat_ikan_dalam_Kg(placeholder="Berat Ikan") }}
+                        {{ form.harga_per_Kg(placeholder="Harga per kilo") }}
+                        {{ form.minimal_order_dalam_Kg(placeholder="Minimal order") }}
+                        {{ form.ketersediaan(placeholder="Stock") }}
+                        {{ form.kondisi_ikan(placeholder="Kondisi Ikan") }}
+
+                        <button class="btn btn-sm btn-success" type="submit">Tambah Ikan</button>
+                    </form>
+
+
+                </div>
+	            <!-- /.panel-body -->
+	        </div>
+	        <!-- /.panel -->
+	    </div>
+	    <!-- /.col-lg-12-->
+	</div>
+{% endblock %}
