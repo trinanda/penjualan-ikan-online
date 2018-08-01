@@ -27,7 +27,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), unique=True)
     nomor_telepon = db.Column(db.VARCHAR(255), unique=True)
     password = db.Column(db.String(255))
-    lokasi_penjualan = Column(db.VARCHAR, unique=True)
+    domisili = Column(db.VARCHAR, unique=True)
     active = db.Column(db.Boolean())
     confirmed_at = db.Column(db.DateTime())
     roles = db.relationship('Role', secondary=roles_users,
@@ -37,13 +37,13 @@ class User(db.Model, UserMixin):
         return self.email
 
     try:
-        def __init__(self, nama_toko, email, nomor_telepon, password, lokasi_penjualan):
+        def __init__(self, nama_toko, email, nomor_telepon, password, domisili):
             self.nama_toko = nama_toko
             self.email = email
             self.nomor_telepon = nomor_telepon
             self.password = password
             self.email = email
-            self.lokasi_penjualan = lokasi_penjualan
+            self.domisili = domisili
     except:
         pass
 

@@ -105,6 +105,15 @@ def buat_app():
         harga_per_Kg = Ikan.query.filter_by(id_ikan=id_ikan).first()
         harga_per_Kg = harga_per_Kg.harga_per_Kg
 
+        # current_user_position = 'Sumatera Selatan'
+
+        # try:
+        #     result, lokasi = db.session.query(Ikan, User).join(User).filter(User.domisili == current_user_position).first()
+        # except:
+        #     pass
+        #
+        # print('ggg', lokasi)
+
         if request.method == "get":
             pesan_berapa_kg = request.form.get('pesan_berapa_kg')
             return render_template("form_data_pembeli.html")
@@ -115,8 +124,6 @@ def buat_app():
         session['MINIMAL_ORDER_DALAM_KG'] = minimal_order_dalam_Kg
         session['HARGA_PER_KG'] = harga_per_Kg
         session['ID_IKAN'] = id_ikan
-
-
 
         return render_template("detail_ikan.html", ID_IKAN=id_ikan, NAMA_IKAN=nama_ikan, BERAT_IKAN= berat_ikan_dalam_Kg,
                                HARGA_IKAN=harga_per_Kg, KETERANGAN_IKAN=keterangan_ikan, MINIMAL_ORDER=minimal_order_dalam_Kg,
@@ -183,8 +190,25 @@ def buat_app():
         return render_template("invoice.html")
 
     @app.route('/nearby')
-    def nearby():
-        return render_template("nearby_places.html")
+    def nearby(current_user_position=None):
+
+        urutan_ikan_dalam_tampilan_halaman = Ikan.query.order_by('urutan_ikan_dalam_tampilan_halaman')
+
+        current_user_position = 'Sumatera Selatan1'
+
+        try:
+            result, nearby_fish = db.session.query(Ikan, User).join(User).filter(User.domisili == current_user_position).first()
+        except:
+            nearby_fish = 'Data Not Valid'
+
+        # urutan_ikan_dalam_tampilan_halaman = Ikan.query.order_by(nearby_fish)
+
+        print('ggg', nearby_fish)
+
+        # id_ikan = session['ID_IKAN']
+        # print('aaaa', id_ikan)
+
+        return render_template("nearby_places.html", IKANS=urutan_ikan_dalam_tampilan_halaman)
 
     @app.route('/signup', methods=['GET', 'POST'])
     def signup():
@@ -194,7 +218,7 @@ def buat_app():
             if form.validate_on_submit():
                 hashed_password = form.password.data
                 new_user = User(nama_toko=form.nama_toko.data, email=form.email.data, nomor_telepon=form.nomor_telepon.data,
-                                password=hashed_password, lokasi_penjualan=form.lokasi_penjualan.data)
+                                password=hashed_password, domisili=form.domisili.data)
                 db.session.add(new_user)
                 db.session.commit()
 
