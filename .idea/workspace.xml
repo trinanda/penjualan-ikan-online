@@ -2,27 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9dc81b44-62d9-4887-91b2-54a3ab9045c9" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/migrations/versions/5275d8f1d2ef_reset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/00-some-important-thing/when upgrade alembic enum always already exist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/if_enum_migrations_error" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/if_enum_migrations_error" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/05183f24b685_menukar_tipe_data_lokasi_toko_pada_.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/0fb04b8fa83d_menukar_tipe_data_lokasi_toko_dan_nomor_.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/368a5c2a8572_inisialisasi_database.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/493d292da054_menukar_tipe_data_lokasi_toko_dan_nomor_.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/6504672864a4_menambahkan_fitur_login.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/707a87eadcac_menambah_kolom_nomor_telepon_pada_table_.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/754824f3c669_menukar_nama_kolom_lokasi_toko_menjadi_.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/c80ad7ec0f7a_menukar_tipe_data_nomor_telepon_pada_.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/c93038308271_adding_kolumn_is_public.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/e1a07a7bf97d_menambahkan_kolom_lokasi_pada_table_.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/fd6fce480b2d_menukar_kolom_lokasi_dengan_domisili_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/6a15cfa2fa66_menukar_nama_table_user_dengan_table_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/7a01658dd81c_menukar_nama_table_user_dengan_table_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/b94546b39758_menukar_nama_table_user_dengan_table_.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web_app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_app/templates/base-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/templates/base-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_app/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/templates/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_app/templates/edit_ikan.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/templates/edit_ikan.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_app/templates/tambah_ikan.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/templates/tambah_ikan.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app/templates/detail_ikan.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/templates/detail_ikan.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,21 +32,21 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="697" />
-          <entry key="py" value="2431" />
+          <entry key="html" value="702" />
+          <entry key="py" value="2541" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="697" />
+          <entry key="HTML" value="702" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="2431" />
+          <entry key="Python" value="2541" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="35" />
+          <entry key="html" value="36" />
           <entry key="if_enum_migrations_error" value="1" />
           <entry key="ipynb" value="1" />
           <entry key="py" value="20" />
@@ -71,7 +58,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Bash" value="1" />
-          <entry key="HTML" value="35" />
+          <entry key="HTML" value="36" />
           <entry key="IPNB" value="1" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="Python" value="20" />
@@ -84,8 +71,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web_app/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+            <state relative-caret-position="149">
+              <caret line="204" column="65" selection-start-line="204" selection-start-column="65" selection-end-line="204" selection-end-column="65" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -94,10 +81,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web_app/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="152" column="17" selection-start-line="152" selection-start-column="13" selection-end-line="152" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web_app/templates/nearby_places.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="73" lean-forward="true" selection-start-line="32" selection-start-column="73" selection-end-line="32" selection-end-column="73" />
+            <state relative-caret-position="60">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#2;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -106,34 +105,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web_app/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="55" selection-start-line="55" selection-end-line="55" />
+            <state relative-caret-position="192">
+              <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web_app/templates/base-template.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="83" column="25" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web_app/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="75" column="8" lean-forward="true" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -228,19 +206,19 @@
         <option value="$PROJECT_DIR$/web_app/templates/ikan_details.html" />
         <option value="$PROJECT_DIR$/migrations/versions/fd6fce480b2d_menukar_kolom_lokasi_dengan_domisili_.py" />
         <option value="$PROJECT_DIR$/web_app/templates/signup.html" />
-        <option value="$PROJECT_DIR$/web_app/templates/detail_ikan.html" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/web_app/templates/nearby_places.html" />
         <option value="$PROJECT_DIR$/migrations/versions/6a15cfa2fa66_menukar_nama_table_user_dengan_table_.py" />
         <option value="$PROJECT_DIR$/migrations/versions/b94546b39758_menukar_nama_table_user_dengan_table_.py" />
         <option value="$PROJECT_DIR$/migrations/if_enum_migrations_error" />
-        <option value="$PROJECT_DIR$/web_app/models.py" />
         <option value="$PROJECT_DIR$/web_app/templates/dashboard.html" />
         <option value="$PROJECT_DIR$/web_app/templates/edit_ikan.html" />
         <option value="$PROJECT_DIR$/web_app/templates/tambah_ikan.html" />
-        <option value="$PROJECT_DIR$/web_app/app.py" />
         <option value="$PROJECT_DIR$/web_app/templates/base-template.html" />
         <option value="$PROJECT_DIR$/web_app/views.py" />
+        <option value="$PROJECT_DIR$/web_app/app.py" />
+        <option value="$PROJECT_DIR$/web_app/templates/detail_ikan.html" />
+        <option value="$PROJECT_DIR$/web_app/models.py" />
       </list>
     </option>
   </component>
@@ -265,12 +243,6 @@
               <item name="penjualan-ikan-online-irwan-santosa" type="b2602c69:ProjectViewProjectNode" />
               <item name="penjualan-ikan-online-irwan-santosa" type="462c0819:PsiDirectoryNode" />
               <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="penjualan-ikan-online-irwan-santosa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="penjualan-ikan-online-irwan-santosa" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-              <item name="versions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="penjualan-ikan-online-irwan-santosa" type="b2602c69:ProjectViewProjectNode" />
@@ -389,9 +361,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="795" width="1366" height="741" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22534142" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23748103" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -402,7 +373,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.163606" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32554257" />
       <window_info anchor="bottom" id="Python Console" order="9" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -490,13 +461,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/migrations/versions/368a5c2a8572_inisialisasi_database.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/versions/368a5c2a8572_inisialisasi_database.py" />
     <entry file="file://$PROJECT_DIR$/web_app/templates/security/_menu.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -551,13 +516,7 @@
     <entry file="file://$PROJECT_DIR$/web_app/templates/login.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/migrations/versions/c93038308271_adding_kolumn_is_public.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="20" column="63" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/versions/c93038308271_adding_kolumn_is_public.py" />
     <entry file="file://$PROJECT_DIR$/web_app/templates/ikan_details.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -565,13 +524,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/migrations/versions/fd6fce480b2d_menukar_kolom_lokasi_dengan_domisili_.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" column="42" lean-forward="true" selection-start-line="21" selection-start-column="42" selection-end-line="22" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/versions/fd6fce480b2d_menukar_kolom_lokasi_dengan_domisili_.py" />
     <entry file="file://$PROJECT_DIR$/web_app/templates/index.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -596,24 +549,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web_app/templates/nearby_places.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="73" lean-forward="true" selection-start-line="32" selection-start-column="73" selection-end-line="32" selection-end-column="73" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#2;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrations/versions/289c35f7c57d_menambahkan_kolom_domisili_name_pada_.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="20" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/versions/289c35f7c57d_menambahkan_kolom_domisili_name_pada_.py" />
     <entry file="file://$PROJECT_DIR$/scripts/reset_migrations.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -621,16 +557,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/migrations/versions/f6ceeb1c54f4_kembali_menghapus_table_domisili.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/00-some-important-thing/when upgrade alembic enum always already exist">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/versions/f6ceeb1c54f4_kembali_menghapus_table_domisili.py" />
+    <entry file="file://$PROJECT_DIR$/00-some-important-thing/when upgrade alembic enum always already exist" />
     <entry file="file://$PROJECT_DIR$/migrations/versions/6a15cfa2fa66_menukar_nama_table_user_dengan_table_.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -665,13 +593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web_app/templates/detail_ikan.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web_app/templates/edit_ikan.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
@@ -700,26 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web_app/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web_app/templates/base-template.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
@@ -729,10 +630,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web_app/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="75" column="8" lean-forward="true" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
+        <state relative-caret-position="138">
+          <caret line="152" column="17" selection-start-line="152" selection-start-column="13" selection-end-line="152" selection-end-column="17" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="204" column="65" selection-start-line="204" selection-start-column="65" selection-end-line="204" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/templates/detail_ikan.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/templates/nearby_places.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#2;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
           </folding>
         </state>
       </provider>

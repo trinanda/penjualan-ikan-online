@@ -201,8 +201,10 @@ def buat_app():
         # except:
         #     nearby_fish = 'Data Not Valid'
 
-        # urutan_ikan_dalam_tampilan_halamanerr = Ikan.query.filter_by(user_id=8)
-        urutan_ikan_dalam_tampilan_halamanerr = db.session.query(Ikan, Penjual).join(Penjual).filter_by(domisili=current_user_position)
+        urutan_ikan_dalam_tampilan_halamanerr = db.session.query(Ikan.id_ikan, Ikan.nama_ikan, Ikan.berat_ikan_dalam_Kg, Ikan.foto_ikan,
+                                                                 Penjual).join(Penjual).filter(Penjual.domisili==current_user_position)
+        print('xxx', urutan_ikan_dalam_tampilan_halamanerr)
+        # urutan_ikan_dalam_tampilan_halamanerr = Ikan.query.filter_by(user_id=3)
 
         return render_template("nearby_places.html", IKANS=urutan_ikan_dalam_tampilan_halamanerr)
 

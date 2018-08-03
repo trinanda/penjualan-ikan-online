@@ -28,7 +28,7 @@ class Penjual(db.Model, UserMixin):
     email = db.Column(db.String(255), unique=True)
     nomor_telepon = db.Column(db.VARCHAR(255), unique=True)
     password = db.Column(db.String(255))
-    domisili = Column(db.VARCHAR, unique=True)
+    domisili = Column(db.VARCHAR)
     active = db.Column(db.Boolean())
     confirmed_at = db.Column(db.DateTime())
     roles = db.relationship('Role', secondary=roles_users,

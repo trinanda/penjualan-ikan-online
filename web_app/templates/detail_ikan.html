@@ -53,7 +53,7 @@ $(window).load(function() {
 				<h2>Nama Penjual</h2>
 				<h1>{{ NAMA_IKAN }} Ukuran {{ BERAT_IKAN }} Kg</h1>
 				<h6 class="item_price">Rp. {{ HARGA_IKAN }},00</h6>
-				<p>{{ KETERANGAN_IKAN }}</p>
+				<p>{{ KETERANGAN_IKAN|safe }}</p>
 				<p>Anda ingin memesan berapa Kg: </p>
 				<input class="form-control" type="number" name="pesan_berapa_kg" value="1" placeholder="1" id="example-number-input" style="width: 70px;">
 				<h4>Minimal order untuk ikan ini adalah {{ MINIMAL_ORDER }} Kg</h4>
