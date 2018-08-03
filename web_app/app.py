@@ -9,7 +9,7 @@ from werkzeug.utils import redirect
 sys.path.append(os.getcwd() + '/web_app')
 from flask_admin import Admin, helpers as admin_helpers
 from flask import Flask, render_template, request, session, url_for, flash
-from models import db, Ikan, Pembeli, User, Role
+from models import db, Ikan, Pembeli, Penjual, Role
 from views import ViewIkan, ViewPembeli, MyModelView, RegisterFormView, LoginFormView, AddIkanForm, EditIkanForm
 
 
@@ -27,7 +27,7 @@ def buat_app():
     login_manager.login_view = 'login'
 
     # Setup Flask-Security
-    user_datastore = SQLAlchemyUserDatastore(db, User, Role)
+    user_datastore = SQLAlchemyUserDatastore(db, Penjual, Role)
     security = Security(app, user_datastore)
 
     # Create admin
@@ -37,7 +37,7 @@ def buat_app():
     admin.add_view(ViewIkan(Ikan, db.session))
     admin.add_view(ViewPembeli(Pembeli, db.session))
     admin.add_view(MyModelView(Role, db.session))
-    admin.add_view(MyModelView(User, db.session))
+    admin.add_view(MyModelView(Penjual, db.session))
 
     # define a context processor for merging flask-admin's template context into the
     # flask-security views.
@@ -53,7 +53,7 @@ def buat_app():
     @app.route('/', methods=['POST','GET'])
     def ikan(fish=None, id_ikan=None):
 
-        ikan = Ikan('','','','','','','','','')
+        ikan = Ikan('','','','','','','','')
         #
         if fish is not None:
             ikan = Ikan.query.filter_by(nama_ikan=fish).first()
@@ -192,23 +192,19 @@ def buat_app():
     @app.route('/nearby')
     def nearby(current_user_position=None):
 
-        urutan_ikan_dalam_tampilan_halaman = Ikan.query.order_by('urutan_ikan_dalam_tampilan_halaman')
+        # urutan_ikan_dalam_tampilan_halaman = Ikan.query.order_by('urutan_ikan_dalam_tampilan_halaman')
 
-        current_user_position = 'Sumatera Selatan1'
+        current_user_position = 'Sumatera Selatan'
 
-        try:
-            result, nearby_fish = db.session.query(Ikan, User).join(User).filter(User.domisili == current_user_position).first()
-        except:
-            nearby_fish = 'Data Not Valid'
+        # try:
+        #     result, nearby_fish = db.session.query(Ikan, User).join(User).filter(User.domisili == current_user_position).first()
+        # except:
+        #     nearby_fish = 'Data Not Valid'
 
-        # urutan_ikan_dalam_tampilan_halaman = Ikan.query.order_by(nearby_fish)
+        # urutan_ikan_dalam_tampilan_halamanerr = Ikan.query.filter_by(user_id=8)
+        urutan_ikan_dalam_tampilan_halamanerr = db.session.query(Ikan, Penjual).join(Penjual).filter_by(domisili=current_user_position)
 
-        print('ggg', nearby_fish)
-
-        # id_ikan = session['ID_IKAN']
-        # print('aaaa', id_ikan)
-
-        return render_template("nearby_places.html", IKANS=urutan_ikan_dalam_tampilan_halaman)
+        return render_template("nearby_places.html", IKANS=urutan_ikan_dalam_tampilan_halamanerr)
 
     @app.route('/signup', methods=['GET', 'POST'])
     def signup():
@@ -217,7 +213,7 @@ def buat_app():
         try:
             if form.validate_on_submit():
                 hashed_password = form.password.data
-                new_user = User(nama_toko=form.nama_toko.data, email=form.email.data, nomor_telepon=form.nomor_telepon.data,
+                new_user = Penjual(nama_toko=form.nama_toko.data, email=form.email.data, nomor_telepon=form.nomor_telepon.data,
                                 password=hashed_password, domisili=form.domisili.data)
                 db.session.add(new_user)
                 db.session.commit()
@@ -238,7 +234,7 @@ def buat_app():
         if request.method == 'POST':
             if form.validate_on_submit():
                 session['email'] = request.form['email']
-                user = User.query.filter_by(email=form.email.data).first()
+                user = Penjual.query.filter_by(email=form.email.data).first()
                 if verify_password(user.password, form.password.data):
                     user.authenticated = True
                     db.session.add(user)
@@ -274,7 +270,7 @@ def buat_app():
             if form.validate_on_submit():
                 new_ikan = Ikan(form.nama_ikan.data, form.keterangan_ikan.data, form.berat_ikan_dalam_Kg.data,
                                 form.harga_per_Kg.data, form.minimal_order_dalam_Kg.data, form.ketersediaan.data,
-                                form.kondisi_ikan.data, current_user.id, False)
+                                current_user.id, False)
                 db.session.add(new_ikan)
                 db.session.commit()
                 return redirect(url_for('dashboard'))
@@ -283,7 +279,7 @@ def buat_app():
 
     @app.route('/ikan_delete/<ikan_id>')
     def ikan_delete(ikan_id):
-        data = db.session.query(Ikan, User).join(User).filter(Ikan.id_ikan == ikan_id).first()
+        data = db.session.query(Ikan, Penjual).join(Penjual).filter(Ikan.id_ikan == ikan_id).first()
         if data.Ikan.is_public:
             return render_template('ikan_detail.html', ikan=data)
         else:
@@ -299,7 +295,7 @@ def buat_app():
     @app.route('/ikan_edit/<ikan_id>', methods=['GET', 'POST'])
     def ikan_edit(ikan_id):
         nama_toko = current_user.nama_toko
-        data = db.session.query(Ikan, User).join(User).filter(Ikan.id_ikan == ikan_id).first()
+        data = db.session.query(Ikan, Penjual).join(Penjual).filter(Ikan.id_ikan == ikan_id).first()
         form = EditIkanForm(request.form)
         if request.method == 'POST':
             if form.validate_on_submit():
@@ -311,7 +307,6 @@ def buat_app():
                     new_harga_per_Kg = form.harga_per_Kg.data
                     new_minimal_order_dalam_Kg = form.minimal_order_dalam_Kg.data
                     new_stock = form.ketersediaan.data
-                    new_kondisi = form.kondisi_ikan.data
                     try:
                         data.nama_ikan = new_nama_ikan
                         data.keterangan_ikan = new_keterangan_ikan
@@ -319,7 +314,6 @@ def buat_app():
                         data.harga_per_Kg = new_harga_per_Kg
                         data.minimal_order_dalam_Kg = new_minimal_order_dalam_Kg
                         data.stock = new_stock
-                        data.kondisi = new_kondisi
 
                         db.session.commit()
 
@@ -332,7 +326,7 @@ def buat_app():
 
     @app.route('/ikan/<ikan_id>')
     def ikan_details(ikan_id):
-        ikan_with_user = db.session.query(Ikan, User).join(User).filter(Ikan.id_ikan == ikan_id).first()
+        ikan_with_user = db.session.query(Ikan, Penjual).join(Penjual).filter(Ikan.id_ikan == ikan_id).first()
         if ikan_with_user is not None:
             if ikan_with_user.Ikan.is_public:
                 return render_template('ikan_detail.html', ikan=ikan_with_user)

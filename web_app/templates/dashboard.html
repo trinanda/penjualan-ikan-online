@@ -30,7 +30,6 @@
 									<th>Harga Ikan</th>
 									<th>Minimal Order</th>
 									<th>Stock</th>
-									<th>Kondisi</th>
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -43,7 +42,6 @@
 									<td>Rp.{{ list.harga_per_Kg }},00</td>
 									<td>{{ list.minimal_order_dalam_Kg }}</td>
 									<td>{{ list.ketersediaan }}</td>
-									<td>{{ list.kondisi_ikan }}</td>
                                     <td>
                                         <a href="{{ url_for('ikan_delete', ikan_id=list.id_ikan) }}">Delete</a>
                                         |

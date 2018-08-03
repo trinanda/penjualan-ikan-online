@@ -188,8 +188,6 @@ class LoginFormView(FlaskForm):
 TERSEDIA = 'tersedia'
 STOCK_HABIS = 'stock habis'
 
-FROZEN = 'frozen'
-FRESH = 'segar'
 
 class AddIkanForm(FlaskForm):
     nama_ikan = StringField('Nama Ikan', validators=[DataRequired()])
@@ -198,7 +196,6 @@ class AddIkanForm(FlaskForm):
     harga_per_Kg = IntegerField('Harga Ikan', validators=[DataRequired()])
     minimal_order_dalam_Kg = StringField('Minimal Order', validators=[DataRequired()])
     ketersediaan = SelectField('status_ikan',choices=[(TERSEDIA, TERSEDIA), (STOCK_HABIS, STOCK_HABIS)])
-    kondisi_ikan = SelectField('status_ikan',choices=[(FROZEN, FROZEN), (FRESH, FRESH)])
 
 
 class EditIkanForm(FlaskForm):
@@ -208,4 +205,3 @@ class EditIkanForm(FlaskForm):
     harga_per_Kg = IntegerField('Harga Ikan', validators=[DataRequired()])
     minimal_order_dalam_Kg = StringField('Minimal Order', validators=[DataRequired()])
     ketersediaan = SelectField('status_ikan',choices=[(TERSEDIA, TERSEDIA), (STOCK_HABIS, STOCK_HABIS)])
-    kondisi_ikan = SelectField('status_ikan',choices=[(FROZEN, FROZEN), (FRESH, FRESH)])

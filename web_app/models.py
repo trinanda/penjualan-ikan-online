@@ -1,13 +1,14 @@
 from flask_security import RoleMixin, UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, String, Integer, Enum, Numeric, Unicode, ForeignKey, DateTime
+from sqlalchemy.orm import relationship
 
 db = SQLAlchemy()
 
 
 roles_users = db.Table(
     'roles_users',
-    db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
+    db.Column('user_id', db.Integer(), db.ForeignKey('penjual.id')),
     db.Column('role_id', db.Integer(), db.ForeignKey('role.id'))
 )
 
@@ -21,7 +22,7 @@ class Role(db.Model, RoleMixin):
         return self.name
 
 
-class User(db.Model, UserMixin):
+class Penjual(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     nama_toko = db.Column(db.String(255), unique=True)
     email = db.Column(db.String(255), unique=True)
@@ -42,7 +43,6 @@ class User(db.Model, UserMixin):
             self.email = email
             self.nomor_telepon = nomor_telepon
             self.password = password
-            self.email = email
             self.domisili = domisili
     except:
         pass
@@ -58,7 +58,7 @@ class Ikan(db.Model):
     harga_per_Kg = Column(Integer)
     foto_ikan = Column(Unicode(128))
 
-    user_id = Column(Integer, ForeignKey(User.id))
+    user_id = Column(Integer, ForeignKey(Penjual.id))
 
     is_public = db.Column(db.Boolean(), nullable=False)
 
@@ -66,23 +66,18 @@ class Ikan(db.Model):
     STOCK_HABIS = 'stock habis'
     ketersediaan = Column(Enum(TERSEDIA, STOCK_HABIS, name='Ketersediaan', default=TERSEDIA))
 
-    FROZEN = 'frozen'
-    FRESH = 'segar'
-    kondisi_ikan = Column(Enum(FROZEN, FRESH, name='kondisi_ikan', default=FRESH))
-
 
     def __repr__(self):
         return '{}'.format(self.nama_ikan)
 
     def __init__(self, nama_ikan, keterangan_ikan, berat_ikan_dalam_Kg, harga_per_Kg,
-                 minimal_order_dalam_Kg, ketersediaan, kondisi_ikan, user_id, is_public):
+                 minimal_order_dalam_Kg, ketersediaan, user_id, is_public):
         self.nama_ikan = nama_ikan
         self.keterangan_ikan = keterangan_ikan
         self.berat_ikan_dalam_Kg = berat_ikan_dalam_Kg
         self.harga_per_Kg = harga_per_Kg
         self.minimal_order_dalam_Kg = minimal_order_dalam_Kg
         self.ketersediaan = ketersediaan
-        self.kondisi_ikan = kondisi_ikan
         self.user_id = user_id
         self.is_public = is_public
 
