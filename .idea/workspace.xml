@@ -2,14 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9dc81b44-62d9-4887-91b2-54a3ab9045c9" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/migrations/versions/5275d8f1d2ef_reset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/6a15cfa2fa66_menukar_nama_table_user_dengan_table_.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/7a01658dd81c_menukar_nama_table_user_dengan_table_.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/b94546b39758_menukar_nama_table_user_dengan_table_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0000-percobaan/01-smtplib/01-SMTP.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0000-percobaan/01-smtplib/02-SMTP_SSL.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0000-percobaan/01-smtplib/03-contoh aplikasi dengan flask/app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0000-percobaan/01-smtplib/03-contoh aplikasi dengan flask/templates/form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0000-percobaan/01-smtplib/03-contoh aplikasi dengan flask/templates/kirim_gagal.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0000-percobaan/01-smtplib/03-contoh aplikasi dengan flask/templates/kirim_sukses.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0000-percobaan/02-flask-mail/app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0000-percobaan/02-flask-mail/templates/form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0000-percobaan/02-flask-mail/templates/kirim_gagal.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0000-percobaan/02-flask-mail/templates/kirim_sukses.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0000-percobaan/flask-method-request/app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0000-percobaan/flask-method-request/templates/form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0000-percobaan/flask-method-request/templates/response.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_app/templates/detail_ikan.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/templates/detail_ikan.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/templates/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app/templates/edit_ikan.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/templates/edit_ikan.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_app/templates/tambah_ikan.html" beforeDir="false" afterPath="$PROJECT_DIR$/web_app/templates/tambah_ikan.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,58 +34,66 @@
     <session id="1789693007">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
-          <entry key="project.open.time.2" value="1" />
+          <entry key="project.closed" value="12" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.2" value="3" />
           <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.32" value="1" />
+          <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.35" value="1" />
+          <entry key="project.open.time.51" value="1" />
+          <entry key="project.open.time.52" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="702" />
-          <entry key="py" value="2541" />
-          <entry key="txt" value="1" />
+          <entry key="html" value="733" />
+          <entry key="py" value="2617" />
+          <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="702" />
+          <entry key="HTML" value="733" />
+          <entry key="Hoi4 file" value="1" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="2541" />
+          <entry key="Python" value="2617" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="36" />
+          <entry key="html" value="42" />
           <entry key="if_enum_migrations_error" value="1" />
           <entry key="ipynb" value="1" />
-          <entry key="py" value="20" />
+          <entry key="py" value="21" />
           <entry key="sh" value="1" />
-          <entry key="txt" value="2" />
+          <entry key="txt" value="3" />
           <entry key="when upgrade alembic enum always already exist" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Bash" value="1" />
-          <entry key="HTML" value="36" />
+          <entry key="HTML" value="42" />
+          <entry key="Hoi4 file" value="1" />
           <entry key="IPNB" value="1" />
           <entry key="PLAIN_TEXT" value="4" />
-          <entry key="Python" value="20" />
+          <entry key="Python" value="21" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web_app/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="204" column="65" selection-start-line="204" selection-start-column="65" selection-end-line="204" selection-end-column="65" />
+            <state relative-caret-position="136">
+              <caret line="311" column="55" lean-forward="true" selection-start-line="311" selection-start-column="55" selection-end-line="311" selection-end-column="55" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -81,10 +102,58 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web_app/templates/dashboard.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="45" column="73" selection-start-line="45" selection-start-column="64" selection-end-line="45" selection-end-column="73" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web_app/templates/edit_ikan.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="248">
+              <caret line="36" column="52" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web_app/templates/tambah_ikan.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="173">
+              <caret line="35" column="53" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web_app/templates/detail_ikan.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="143">
+              <caret line="56" column="47" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web_app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="152" column="17" selection-start-line="152" selection-start-column="13" selection-end-line="152" selection-end-column="17" />
+            <state relative-caret-position="169">
+              <caret line="197" column="95" selection-start-line="197" selection-start-column="90" selection-end-line="197" selection-end-column="95" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -95,8 +164,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web_app/templates/nearby_places.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="150">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#2;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -105,11 +174,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web_app/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+            <state relative-caret-position="141">
+              <caret line="66" column="46" selection-start-line="66" selection-start-column="41" selection-end-line="66" selection-end-column="46" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -130,18 +199,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ccc</find>
-      <find>PESAN_BERAPA_KG</find>
-      <find>varchar</find>
-      <find>string</find>
-      <find>logout_user</find>
-      <find>select</find>
       <find>SelectField</find>
       <find>details</find>
       <find>is_public</find>
       <find>ka</find>
       <find>ikan_edit</find>
-      <find>edit</find>
       <find>kamar</find>
       <find>nama_toko</find>
       <find>logout</find>
@@ -160,6 +222,13 @@
       <find>sign</find>
       <find>kond</find>
       <find>kondisi</find>
+      <find>dashbi</find>
+      <find>dashboard</find>
+      <find>NAMA_TOKO</find>
+      <find>detail_ikan</find>
+      <find>tambah</find>
+      <find>edit</find>
+      <find>stock</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -194,12 +263,10 @@
         <option value="$PROJECT_DIR$/migrations/versions/afeb3bdaf664_inisialisasi_database.py" />
         <option value="$PROJECT_DIR$/web_app/templates/form_data_pembeli.html" />
         <option value="$PROJECT_DIR$/migrations/versions/368a5c2a8572_inisialisasi_database.py" />
-        <option value="$PROJECT_DIR$/web_app/settings.py" />
         <option value="$PROJECT_DIR$/web_app/templates/admin/index.html" />
         <option value="$PROJECT_DIR$/web_app/templates/invoice.html" />
         <option value="$PROJECT_DIR$/web_app/templates/1.ipynb" />
         <option value="$PROJECT_DIR$/web_app/templates/ikan.html" />
-        <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/web_app/templates/theme.html" />
         <option value="$PROJECT_DIR$/web_app/templates/kamar_detail.html" />
         <option value="$PROJECT_DIR$/migrations/versions/c93038308271_adding_kolumn_is_public.py" />
@@ -211,14 +278,16 @@
         <option value="$PROJECT_DIR$/migrations/versions/6a15cfa2fa66_menukar_nama_table_user_dengan_table_.py" />
         <option value="$PROJECT_DIR$/migrations/versions/b94546b39758_menukar_nama_table_user_dengan_table_.py" />
         <option value="$PROJECT_DIR$/migrations/if_enum_migrations_error" />
-        <option value="$PROJECT_DIR$/web_app/templates/dashboard.html" />
-        <option value="$PROJECT_DIR$/web_app/templates/edit_ikan.html" />
-        <option value="$PROJECT_DIR$/web_app/templates/tambah_ikan.html" />
         <option value="$PROJECT_DIR$/web_app/templates/base-template.html" />
         <option value="$PROJECT_DIR$/web_app/views.py" />
-        <option value="$PROJECT_DIR$/web_app/app.py" />
         <option value="$PROJECT_DIR$/web_app/templates/detail_ikan.html" />
+        <option value="$PROJECT_DIR$/web_app/templates/tambah_ikan.html" />
         <option value="$PROJECT_DIR$/web_app/models.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/web_app/settings.py" />
+        <option value="$PROJECT_DIR$/web_app/templates/dashboard.html" />
+        <option value="$PROJECT_DIR$/web_app/templates/edit_ikan.html" />
+        <option value="$PROJECT_DIR$/web_app/app.py" />
       </list>
     </option>
   </component>
@@ -242,11 +311,6 @@
             <path>
               <item name="penjualan-ikan-online-irwan-santosa" type="b2602c69:ProjectViewProjectNode" />
               <item name="penjualan-ikan-online-irwan-santosa" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="penjualan-ikan-online-irwan-santosa" type="b2602c69:ProjectViewProjectNode" />
-              <item name="penjualan-ikan-online-irwan-santosa" type="462c0819:PsiDirectoryNode" />
               <item name="web_app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -265,7 +329,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../reservasi-homestay-lembah-harau_2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../beberapa-fitur-percobaan-ta" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
@@ -361,8 +425,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="795" width="1366" height="741" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23748103" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18133536" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -373,7 +438,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32554257" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3155259" />
       <window_info anchor="bottom" id="Python Console" order="9" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -448,19 +513,9 @@
     <entry file="file://$PROJECT_DIR$/migrations/versions/bc7a3cb3e484_inisialisasi_database.py" />
     <entry file="file://$PROJECT_DIR$/migrations/versions/f03e41f832b6_inisialisasi_database.py" />
     <entry file="file://$PROJECT_DIR$/migrations/versions/afeb3bdaf664_inisialisasi_database.py" />
-    <entry file="file://$PROJECT_DIR$/0000-percobaan/01-smtplib/02-SMTP_SSL.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/0000-percobaan/01-smtplib/01-SMTP.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/0000-percobaan/02-flask-mail/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/0000-percobaan/01-smtplib/02-SMTP_SSL.py" />
+    <entry file="file://$PROJECT_DIR$/0000-percobaan/01-smtplib/01-SMTP.py" />
+    <entry file="file://$PROJECT_DIR$/0000-percobaan/02-flask-mail/app.py" />
     <entry file="file://$PROJECT_DIR$/migrations/versions/368a5c2a8572_inisialisasi_database.py" />
     <entry file="file://$PROJECT_DIR$/web_app/templates/security/_menu.html">
       <provider selected="true" editor-type-id="text-editor" />
@@ -487,20 +542,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web_app/templates/1.ipynb" />
-    <entry file="file://$PROJECT_DIR$/web_app/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python3.6/dist-packages/sqlalchemy/sql/sqltypes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -542,13 +583,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web_app/templates/ikan.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/migrations/versions/289c35f7c57d_menambahkan_kolom_domisili_name_pada_.py" />
     <entry file="file://$PROJECT_DIR$/scripts/reset_migrations.sh">
       <provider selected="true" editor-type-id="text-editor">
@@ -559,16 +593,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/migrations/versions/f6ceeb1c54f4_kembali_menghapus_table_domisili.py" />
     <entry file="file://$PROJECT_DIR$/00-some-important-thing/when upgrade alembic enum always already exist" />
-    <entry file="file://$PROJECT_DIR$/migrations/versions/6a15cfa2fa66_menukar_nama_table_user_dengan_table_.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#130#152#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/versions/6a15cfa2fa66_menukar_nama_table_user_dengan_table_.py" />
     <entry file="file://$PROJECT_DIR$/migrations/if_enum_migrations_error">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
@@ -576,41 +601,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/migrations/versions/b94546b39758_menukar_nama_table_user_dengan_table_.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="69" column="30" lean-forward="true" selection-end-line="95" />
-          <folding>
-            <element signature="e#192#214#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_app/templates/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_app/templates/edit_ikan.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/versions/b94546b39758_menukar_nama_table_user_dengan_table_.py" />
     <entry file="file://$PROJECT_DIR$/web_app/templates/form_data_pembeli.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-322">
           <caret line="81" column="83" selection-start-line="81" selection-start-column="83" selection-end-line="81" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_app/templates/tambah_ikan.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
         </state>
       </provider>
     </entry>
@@ -628,37 +623,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web_app/views.py">
+    <entry file="file://$PROJECT_DIR$/web_app/templates/ikan.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="152" column="17" selection-start-line="152" selection-start-column="13" selection-end-line="152" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_app/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="204" column="65" selection-start-line="204" selection-start-column="65" selection-end-line="204" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_app/templates/detail_ikan.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+        <state relative-caret-position="255">
+          <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web_app/templates/nearby_places.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#2;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -666,12 +641,77 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/templates/detail_ikan.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="56" column="47" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="30" column="109" selection-start-line="30" selection-start-column="109" selection-end-line="30" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="197" column="95" selection-start-line="197" selection-start-column="90" selection-end-line="197" selection-end-column="95" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web_app/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+        <state relative-caret-position="141">
+          <caret line="66" column="46" selection-start-line="66" selection-start-column="41" selection-end-line="66" selection-end-column="46" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/templates/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="45" column="73" selection-start-line="45" selection-start-column="64" selection-end-line="45" selection-end-column="73" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/templates/tambah_ikan.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="35" column="53" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/templates/edit_ikan.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="36" column="52" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_app/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="311" column="55" lean-forward="true" selection-start-line="311" selection-start-column="55" selection-end-line="311" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>

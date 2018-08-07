@@ -4,6 +4,7 @@ from flask_bootstrap import Bootstrap
 from flask_login import LoginManager, login_required, current_user
 from flask_security import SQLAlchemyUserDatastore, Security
 from flask_security.utils import verify_password, login_user, logout_user
+from flask_uploads import IMAGES, UploadSet, configure_uploads
 from werkzeug.utils import redirect
 
 sys.path.append(os.getcwd() + '/web_app')
@@ -25,6 +26,9 @@ def buat_app():
     login_manager = LoginManager()
     login_manager.init_app(app)
     login_manager.login_view = 'login'
+
+    photos = UploadSet('photos', IMAGES)
+    configure_uploads(app, photos)
 
     # Setup Flask-Security
     user_datastore = SQLAlchemyUserDatastore(db, Penjual, Role)
@@ -268,11 +272,12 @@ def buat_app():
     @login_required
     def tambah_ikan():
         form = AddIkanForm(request.form)
-        if request.method == 'POST':
+        if request.method == 'POST' and 'photo' in request.files:
             if form.validate_on_submit():
+                filename = photos.save(request.files['photo'])
                 new_ikan = Ikan(form.nama_ikan.data, form.keterangan_ikan.data, form.berat_ikan_dalam_Kg.data,
                                 form.harga_per_Kg.data, form.minimal_order_dalam_Kg.data, form.ketersediaan.data,
-                                current_user.id, False)
+                                current_user.id, False, filename)
                 db.session.add(new_ikan)
                 db.session.commit()
                 return redirect(url_for('dashboard'))

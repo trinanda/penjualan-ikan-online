@@ -25,3 +25,7 @@ SECURITY_POST_REGISTER_VIEW = "/admin/"
 # Flask-Security features
 SECURITY_REGISTERABLE = True
 SECURITY_SEND_REGISTER_EMAIL = False
+
+#############################################################################################################
+UPLOADED_PHOTOS_DEST = 'web_app/files/'
+#############################################################################################################

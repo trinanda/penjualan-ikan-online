@@ -70,8 +70,8 @@ class Ikan(db.Model):
     def __repr__(self):
         return '{}'.format(self.nama_ikan)
 
-    def __init__(self, nama_ikan, keterangan_ikan, berat_ikan_dalam_Kg, harga_per_Kg,
-                 minimal_order_dalam_Kg, ketersediaan, user_id, is_public):
+    def __init__(self, nama_ikan='', keterangan_ikan='', berat_ikan_dalam_Kg='', harga_per_Kg='',
+                 minimal_order_dalam_Kg='', ketersediaan='', user_id=1, is_public=False, filename=''):
         self.nama_ikan = nama_ikan
         self.keterangan_ikan = keterangan_ikan
         self.berat_ikan_dalam_Kg = berat_ikan_dalam_Kg
@@ -80,6 +80,7 @@ class Ikan(db.Model):
         self.ketersediaan = ketersediaan
         self.user_id = user_id
         self.is_public = is_public
+        self.foto_ikan = filename
 
     urutan_ikan_dalam_tampilan_halaman = Column(Integer)
 
