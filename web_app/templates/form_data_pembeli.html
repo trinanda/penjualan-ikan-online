@@ -39,6 +39,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h1 class="w3layouts_head">Masukan data Anda</h1>
 					<!--<form action="http://localhost:9999/invoice" method="get" class="w3_form_post">-->
 					<form action="#" method="post" class="w3_form_post">
+						{{ captha.csrf_token }}
 						<div class="w3_agileits_main_grid w3l_main_grid">
 							<span class="agileits_grid">
 								<label>Nama Pemesan <span class="star">*</span></label>
@@ -81,8 +82,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<span class="form-sub-label line1">
 											<input type="text" name="alamat_lengkap" placeholder="Alamat Lengkap" required="">
 										</span>
+										{{ captha.recaptcha }}
+										{% for error in captha.recaptcha.errors %}
+										<ul>
+											<li style="color:red;">{{ error }}</li>
+										{% endfor %}
+										</ul>
 										<div class="clear"></div>
 									</div>
+
 									<div class="clear"></div>
 							</span>
 						</div>

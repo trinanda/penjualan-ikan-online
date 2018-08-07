@@ -5,14 +5,17 @@ from flask_login import LoginManager, login_required, current_user
 from flask_security import SQLAlchemyUserDatastore, Security
 from flask_security.utils import verify_password, login_user, logout_user
 from flask_uploads import IMAGES, UploadSet, configure_uploads
+import pdfkit
 from werkzeug.utils import redirect
 
 sys.path.append(os.getcwd() + '/web_app')
 from flask_admin import Admin, helpers as admin_helpers
-from flask import Flask, render_template, request, session, url_for, flash
+from flask import Flask, render_template, request, session, url_for, flash, make_response
 from models import db, Ikan, Pembeli, Penjual, Role
 from views import ViewIkan, ViewPembeli, MyModelView, RegisterFormView, LoginFormView, AddIkanForm, EditIkanForm
-
+from flask_wtf import FlaskForm, RecaptchaField
+import string
+import random
 
 def buat_app():
 
@@ -147,51 +150,82 @@ def buat_app():
         harga_total_pesanan = int(harga_per_Kg) * int(pesan_berapa_kg)
         session['HARGA_TOTAL_PESANAN'] = harga_total_pesanan
 
-        if request.method == 'POST':
+        class LoginForm(FlaskForm):
+            recaptcha = RecaptchaField()
 
-            import string
-            import random
-            def generator_random(size=6, chars=string.ascii_uppercase + string.digits):
-                return ''.join(random.choice(chars) for x in range(size))
+        captha = LoginForm()
+        if captha.validate_on_submit():
+            if request.method == 'POST':
 
-            generate_invoice = 'IF' + generator_random() + 'INV'
-            kode_pembeli = generate_invoice
+                def generator_random(size=6, chars=string.ascii_uppercase + string.digits):
+                    return ''.join(random.choice(chars) for x in range(size))
+
+                generate_invoice = 'IF' + generator_random() + 'INV'
+                kode_pembeli = generate_invoice
+                session['KODE_PEMBELI'] = kode_pembeli
+
+                nama_pemesan = request.form.get('nama_pemesan')
+                no_hp_or_wa = request.form.get('no_hp_or_wa')
+                alamat_lengkap = request.form.get('alamat_lengkap')
+
+                session['NAMA_PEMESAN'] = nama_pemesan
+                session['NOMOR_HP_OR_WA'] = no_hp_or_wa
+                session['ALAMAT_LENGKAP'] = alamat_lengkap
+
+                import time
+                tanggal_pesanan_invoice = time.strftime("%d/%m/%Y")
+                tanggal_pemesanan = time.strftime("%Y-%m-%d %H:%M:%S")
+                # tanggal_pemesanan_untuk_admin = time.strftime("%Y-%m-%d %H:%M:%S")
+                session['TANGGAL_PEMESANAN'] = tanggal_pesanan_invoice
+
+                ikan_id = session['ID_IKAN']
+                nama_ikan = session['NAMA_IKAN']
+                pesan_berapa_kg = pesan_berapa_kg
+                session['PESAN_BERAPA_KG'] = pesan_berapa_kg
+                pesan_berapa_kg = session['PESAN_BERAPA_KG']
+                harga_per_Kg = session['HARGA_PER_KG']
+                harga_total_pesanan = session['HARGA_TOTAL_PESANAN']
+                status_pembayaran = status_pembayarans
+                insert_to_db = Pembeli(ikan_id, kode_pembeli, nama_pemesan, no_hp_or_wa, alamat_lengkap, nama_ikan, pesan_berapa_kg,
+                                       harga_total_pesanan, tanggal_pemesanan, status_pembayaran)
+                db.session.add(insert_to_db)
+                db.session.commit()
 
 
-            nama_pemesan = request.form.get('nama_pemesan')
-            no_hp_or_wa = request.form.get('no_hp_or_wa')
-            alamat_lengkap = request.form.get('alamat_lengkap')
+                return render_template('invoice.html', NAMA_IKAN=nama_ikan, JUMLAH_PESANAN=pesan_berapa_kg,
+                                       HARGA_SATU_IKAN=harga_per_Kg, HARGA_TOTAL=harga_total_pesanan,
+                                       TANGGAL_PESANAN=tanggal_pesanan_invoice, KODE_INVOICE=kode_pembeli,
+                                       NAMA_PEMBELI=nama_pemesan, ALAMAT_PEMBELI=alamat_lengkap, NOMOR_HP_PEMBELI=no_hp_or_wa)
 
-            import time
-            tanggal_pesanan_invoice = time.strftime("%d/%m/%Y")
-            tanggal_pemesanan = time.strftime("%Y-%m-%d %H:%M:%S")
-            # tanggal_pemesanan_untuk_admin = time.strftime("%Y-%m-%d %H:%M:%S")
-
-            ikan_id = session['ID_IKAN']
-            nama_ikan = session['NAMA_IKAN']
-            pesan_berapa_kg = pesan_berapa_kg
-            session['PESAN_BERAPA_KG'] = pesan_berapa_kg
-            pesan_berapa_kg = session['PESAN_BERAPA_KG']
-            harga_per_Kg = session['HARGA_PER_KG']
-            harga_total_pesanan = session['HARGA_TOTAL_PESANAN']
-            status_pembayaran = status_pembayarans
-            insert_to_db = Pembeli(ikan_id, kode_pembeli, nama_pemesan, no_hp_or_wa, alamat_lengkap, nama_ikan, pesan_berapa_kg,
-                                   harga_total_pesanan, tanggal_pemesanan, status_pembayaran)
-            db.session.add(insert_to_db)
-            db.session.commit()
+        return render_template("form_data_pembeli.html", captha=captha)
 
 
-            return render_template('invoice.html', NAMA_IKAN=nama_ikan, JUMLAH_PESANAN=pesan_berapa_kg,
-                                   HARGA_SATU_IKAN=harga_per_Kg, HARGA_TOTAL=harga_total_pesanan,
-                                   TANGGAL_PESANAN=tanggal_pesanan_invoice, KODE_INVOICE=kode_pembeli,
-                                   NAMA_PEMBELI=nama_pemesan, ALAMAT_PEMBELI=alamat_lengkap, NOMOR_HP_PEMBELI=no_hp_or_wa)
-
-        return render_template("form_data_pembeli.html")
-
-
-    @app.route('/invoice')
+    @app.route('/invoice', methods = ['GET', 'POST'])
     def invoice():
-        return render_template("invoice.html")
+        nama_pemesan = session['NAMA_PEMESAN']
+        alamat_lengkap = session['ALAMAT_LENGKAP']
+        no_hp_or_wa = session['NOMOR_HP_OR_WA']
+        nama_ikan = session['NAMA_IKAN']
+        jumlah_pesanan = session['PESAN_BERAPA_KG']
+        harga = session['HARGA_PER_KG']
+        harga_total = session['HARGA_TOTAL_PESANAN']
+        kode_pembeli = session['KODE_PEMBELI']
+        tanggal_pemesanan = session['TANGGAL_PEMESANAN']
+
+        if request.method == "POST":
+            data_pdf = render_template("invoice.html", NAMA_IKAN=nama_ikan, JUMLAH_PESANAN=jumlah_pesanan,
+                                           HARGA_SATU_IKAN=harga, HARGA_TOTAL=harga_total,
+                                           TANGGAL_PESANAN=tanggal_pemesanan, KODE_INVOICE=kode_pembeli,
+                                           NAMA_PEMBELI=nama_pemesan, ALAMAT_PEMBELI=alamat_lengkap, NOMOR_HP_PEMBELI=no_hp_or_wa)
+
+
+            css = "web_app/static/style.css"
+            pdf = pdfkit.from_string(data_pdf, False, css=css)
+            response = make_response(pdf)
+            response.headers['Content-Type'] = 'applications/pdf'
+            response.headers['Content-Disposition'] = 'inline; filename=invoice.pdf'
+            return response
+
 
     @app.route('/nearby')
     def nearby(current_user_position=None):

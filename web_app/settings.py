@@ -29,3 +29,13 @@ SECURITY_SEND_REGISTER_EMAIL = False
 #############################################################################################################
 UPLOADED_PHOTOS_DEST = 'web_app/files/'
 #############################################################################################################
+
+#############################################################################################################
+## Adding reCAPTCHA to your site
+# https://www.google.com/recaptcha/admin#site/341690749?setup
+# Site key
+RECAPTCHA_PUBLIC_KEY = '6Ld9yV0UAAAAAO80R7BhJYQij2t4yXAbbEiZbFFW'
+# Secret key
+RECAPTCHA_PRIVATE_KEY = '6Ld9yV0UAAAAAHMETUy4xdllS-FS4LLFDBC6j5F2'
+TESTING = False
+#############################################################################################################

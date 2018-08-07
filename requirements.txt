@@ -10,3 +10,5 @@ pillow                      ==   5.1.0
 Flask-Bootstrap             ==   3.3.7.1
 flask-login                 ==   0.4.0
 Flask-Uploads               ==   0.2.1
+wkhtmltopdf                 ==   0.2
+pdfkit                      ==   0.6.1
