@@ -36,6 +36,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="banner-dott">
 		<div class="main">
 				<div class="w3layouts_main_grid">
+
+					<div>
+						<!--<h1 style="text-align: center;">Cara Pembayaran-->
+							<!--<p style="text-transform: None; text-align: center;">Berikut adalah ketentuan metode pembayaran di Irwan Fish :</p>-->
+						<!--</h1>-->
+							<h1 style="text-align: left;"><span style="text-align: center;">Metode Pembayaran</span>
+								<ol type="1" style="text-transform: None;">
+									<li>1. Transaksi Pembayaran dapat kami lakukan dalam dua bentuk yaitu Cash maupun Transfer</li><br>
+									<li>2. Untuk Pembayaran Cash (COD) saat ini hanya berlaku untuk wilayah Payakumbuh dan Lima Puluh Kota</li><br>
+									<li>3. Untuk Pembayaran Transfer dapat ditujukan langsung ke nomor rekening 112233445566778899 a.n BRI PT Irwan Fish</li><br>
+									<li>4. Detail lebih lanjut tentang ketentuan pembayaran akan dijelaskan oleh tim customer service kami saat pemesanan sudah anda lakukan.</li>
+								</ol>
+							</h1>
+					</div>
+
 				<h1 class="w3layouts_head">Masukan data Anda</h1>
 					<!--<form action="http://localhost:9999/invoice" method="get" class="w3_form_post">-->
 					<form action="#" method="post" class="w3_form_post">
@@ -54,8 +69,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<!--</div>-->
 						<div class="w3_agileits_main_grid w3l_main_grid">
 							<span class="agileits_grid">
-								<label>No. Hp/WhatsApp <span class="star">*</span></label>
-								<input type="text" name="no_hp_or_wa" placeholder="No. Hp/WhatsApp" required="">
+								<label>No. Hp<span class="star">*</span></label>
+								<input type="text" name="no_hp_or_wa" placeholder="Masukan beserta kode negera e.g +6282285250554" required="">
 							</span>
 						</div>
 						<div class="w3_agileits_main_grid w3l_main_grid">
@@ -83,7 +98,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<input type="text" name="alamat_lengkap" placeholder="Alamat Lengkap" required="">
 										</span>
 
-										{{ captha.recaptcha }}
+										<div  data-theme="light" data-sitekey="XXXXXXXXXXXXX"
+											 style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;">
+											{{ captha.recaptcha }}</div>
+										<!--{{ captha.recaptcha }}-->
 										{% for error in captha.recaptcha.errors %}
 										<ul>
 											<li style="color:red;">{{ error }}</li>
@@ -109,19 +127,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<!--</span>-->
 						<!--</div>-->
 						<br>
-					<div>
-						<h1 style="text-align: left;">Cara Pembayaran
-							<p style="text-transform: None;">Berikut adalah ketentuan metode pembayaran di Irwan Fish :</p>
-						</h1>
-							<h1 style="text-align: left;">Metode Pembayaran
-								<ol type="1" style="text-transform: None;">
-									<li>1. Transaksi Pembayaran dapat kami lakukan dalam dua bentuk yaitu Cash maupun Transfer</li><br>
-									<li>2. Untuk Pembayaran Cash (COD) saat ini hanya berlaku untuk wilayah Payakumbuh dan Lima Puluh Kota</li><br>
-									<li>3. Untuk Pembayaran Transfer dapat ditujukan langsung ke nomor rekening 112233445566778899 a.n BRI PT Irwan Fish</li><br>
-									<li>4. Detail lebih lanjut tentang ketentuan pembayaran akan dijelaskan oleh tim customer service kami saat pemesanan sudah anda lakukan.</li>
-								</ol>
-							</h1>
-					</div>
+
 
 					<div class="w3_main_grid">
 						<div class="w3_main_grid_right">

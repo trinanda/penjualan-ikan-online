@@ -6,7 +6,11 @@ from flask_security import SQLAlchemyUserDatastore, Security
 from flask_security.utils import verify_password, login_user, logout_user
 from flask_uploads import IMAGES, UploadSet, configure_uploads
 import pdfkit
+from twilio.rest import Client
 from werkzeug.utils import redirect
+
+from web_app.settings import TWLIO_ACCOUNT_SID_UPGRADED_FOR_USER, TWLIO_AUTH_TOKEN_UPGRADED_FOR_USER, \
+    TWLIO_ACCOUNT_SID_NONE_UPGRADED_FOR_ADMIN, TWLIO_AUTH_TOKEN_NONE_UPGRADED_FOR_ADMIN
 
 sys.path.append(os.getcwd() + '/web_app')
 from flask_admin import Admin, helpers as admin_helpers
@@ -186,6 +190,51 @@ def buat_app():
                 harga_per_Kg = session['HARGA_PER_KG']
                 harga_total_pesanan = session['HARGA_TOTAL_PESANAN']
                 status_pembayaran = status_pembayarans
+
+                msg_to_admin = "Pelanggan atas nama " + nama_pemesan + " dengan kode " + kode_pembeli + " dan nomor telepon " \
+                               + no_hp_or_wa + " dan alamat " + alamat_lengkap + " telah memesan ikan " + nama_ikan + \
+                               " sebanyak " + str(pesan_berapa_kg) + " dan harga total nya adalah " + str(harga_total_pesanan)
+                message_to_pemesan = "Terima kasih " + nama_pemesan + " telah menggunakan layanan kami untuk memesan ikan, " + \
+                                     " kami akan segera menghubungi Anda untuk melakukan verifikasi"
+
+                #####################################################################
+                #################
+                ##### TWILIO ####
+                ############################ SMS for User ###########################
+                # # for user notifications
+                # # Your Account SID from twilio.com/console
+                # account_sid_user = TWLIO_ACCOUNT_SID_UPGRADED_FOR_USER
+                # # # # Your Auth Token from twilio.com/console
+                # auth_token_user = TWLIO_AUTH_TOKEN_UPGRADED_FOR_USER
+                # # #
+                # sms_client = Client(account_sid_user, auth_token_user)
+                # # #
+                # nomor_telepon_pemesan = no_hp_or_wa
+                # message_pemesan = sms_client.messages.create(
+                #     to=nomor_telepon_pemesan,
+                #     from_="+12014307127",   # this upgraded number
+                #     body=message_to_pemesan)
+                # print(message_pemesan.sid)
+                #####################################################################
+                ############################ SMS for Admin ##########################
+
+                # for admin notifications
+                # Your Account SID from twilio.com/console
+                # account_sid_admin = TWLIO_ACCOUNT_SID_NONE_UPGRADED_FOR_ADMIN
+                # # # Your Auth Token from twilio.com/console
+                # auth_token_admin = TWLIO_AUTH_TOKEN_NONE_UPGRADED_FOR_ADMIN
+                #
+                # sms_admin = Client(account_sid_admin, auth_token_admin)
+                # message_admin = sms_admin.messages.create(
+                #     to="+6281275803651",
+                #     from_="+12132961837",  # this non upgrade number
+                #     body=msg_to_admin)
+                #
+                # print(message_admin.sid)
+
+                #####-->/ TWILIO ########
+                ######################################################################
+
                 insert_to_db = Pembeli(ikan_id, kode_pembeli, nama_pemesan, no_hp_or_wa, alamat_lengkap, nama_ikan, pesan_berapa_kg,
                                        harga_total_pesanan, tanggal_pemesanan, status_pembayaran)
                 db.session.add(insert_to_db)
