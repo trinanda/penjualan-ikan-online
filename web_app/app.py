@@ -6,6 +6,7 @@ from flask_security import SQLAlchemyUserDatastore, Security
 from flask_security.utils import verify_password, login_user, logout_user
 from flask_uploads import IMAGES, UploadSet, configure_uploads
 import pdfkit
+from geopy import Nominatim
 from twilio.rest import Client
 from werkzeug.utils import redirect
 
@@ -276,24 +277,48 @@ def buat_app():
             return response
 
 
+    @app.route('/lokasi', methods = ['POST', 'GET'])
+    def lokasi():
+        if request.method == "get":
+            cordinat = request.form.get('data')
+            return render_template("nearby_places.html", STATE=cordinat)
+        return render_template('lokasi.html')
+
+
+    @app.route('/getvalue')
+    def getvalue(current_user_position=None):
+        cordinat = request.args.get('data')
+
+        cordinat = request.args.get('data')
+        geolocator = Nominatim(user_agent="jual_ikan")
+        location = geolocator.reverse(cordinat)
+        get_json_value = location.raw
+        get_state_name = get_json_value['address']['state']
+        current_user_position = get_state_name
+
+        urutan_ikan_dalam_tampilan_halamanerr = db.session.query(Ikan.id_ikan, Ikan.nama_ikan, Ikan.berat_ikan_dalam_Kg,
+                                                                 Ikan.foto_ikan,Penjual).join(Penjual).filter(Penjual.domisili ==
+                                                                                                              current_user_position)
+
+        return render_template("nearby_places.html", IKANS=urutan_ikan_dalam_tampilan_halamanerr)
+
+
     @app.route('/nearby')
     def nearby(current_user_position=None):
 
-        # urutan_ikan_dalam_tampilan_halaman = Ikan.query.order_by('urutan_ikan_dalam_tampilan_halaman')
+        cordinat = request.args.get('data')
+        geolocator = Nominatim(user_agent="jual_ikan")
+        location = geolocator.reverse(cordinat)
+        get_json_value = location.raw
+        get_state_name = get_json_value['address']['state']
 
+        # current_user_position = get_state_name
         current_user_position = 'Sumatera Selatan'
-
-        # try:
-        #     result, nearby_fish = db.session.query(Ikan, User).join(User).filter(User.domisili == current_user_position).first()
-        # except:
-        #     nearby_fish = 'Data Not Valid'
 
         urutan_ikan_dalam_tampilan_halamanerr = db.session.query(Ikan.id_ikan, Ikan.nama_ikan, Ikan.berat_ikan_dalam_Kg, Ikan.foto_ikan,
                                                                  Penjual).join(Penjual).filter(Penjual.domisili==current_user_position)
-        print('xxx', urutan_ikan_dalam_tampilan_halamanerr)
-        # urutan_ikan_dalam_tampilan_halamanerr = Ikan.query.filter_by(user_id=3)
 
-        return render_template("nearby_places.html", IKANS=urutan_ikan_dalam_tampilan_halamanerr)
+        return render_template("nearby_places.html", IKANS=urutan_ikan_dalam_tampilan_halamanerr, STATE=get_state_name)
 
     @app.route('/signup', methods=['GET', 'POST'])
     def signup():

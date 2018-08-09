@@ -1,0 +1,32 @@
+{% extends "base-template.html" %}
+{% block content %}
+
+<body onload="getLocation()">
+<!--<button onclick="getLocation()">Try It</button>-->
+
+<div style="display: block;
+    margin: 0 auto;
+    text-align: center;">
+<form method="post" action="http://127.0.0.1:9999/nearby">
+      <textarea name="data" id="demo" cols="30" rows="10"  style="bottom: 5%;"></textarea><br>
+      <input type="submit" value="Dapatkan lokasi">
+  </form>
+</div>
+<script>
+    var x = document.getElementById("demo");
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+
+    function showPosition(position) {
+      x.innerHTML = position.coords.latitude + "," + position.coords.longitude;
+    }
+  </script>
+</body>
+
+{% endblock %}

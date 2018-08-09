@@ -1,6 +1,6 @@
 {% extends "base-template.html" %}
 {% block content %}
-
+<body onload="getLocation()">
 {% for FISH in IKANS %}
 <!--product start here-->
 <!--<div class="product">-->
@@ -46,4 +46,26 @@
 
 {% endfor %}
 
+
+ <form method="get" action="http://localhost:9999/getvalue">
+      <textarea name="data" id="demo" cols="30" rows="10" ></textarea><br>
+      <input type="submit" value="Lokasi Terdekat">
+  </form>
+  <script>
+    var x = document.getElementById("demo");
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+
+    function showPosition(position) {
+      x.innerHTML = position.coords.latitude + "," + position.coords.longitude;
+    }
+  </script>
+
+</body>
 {% endblock %}
