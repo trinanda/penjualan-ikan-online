@@ -202,36 +202,36 @@ def buat_app():
                 #################
                 ##### TWILIO ####
                 ############################ SMS for User ###########################
-                # # for user notifications
-                # # Your Account SID from twilio.com/console
-                # account_sid_user = TWLIO_ACCOUNT_SID_UPGRADED_FOR_USER
-                # # # # Your Auth Token from twilio.com/console
-                # auth_token_user = TWLIO_AUTH_TOKEN_UPGRADED_FOR_USER
-                # # #
-                # sms_client = Client(account_sid_user, auth_token_user)
-                # # #
-                # nomor_telepon_pemesan = no_hp_or_wa
-                # message_pemesan = sms_client.messages.create(
-                #     to=nomor_telepon_pemesan,
-                #     from_="+12014307127",   # this upgraded number
-                #     body=message_to_pemesan)
-                # print(message_pemesan.sid)
-                #####################################################################
-                ############################ SMS for Admin ##########################
-
-                # for admin notifications
+                # for user notifications
                 # Your Account SID from twilio.com/console
-                # account_sid_admin = TWLIO_ACCOUNT_SID_NONE_UPGRADED_FOR_ADMIN
+                account_sid_user = TWLIO_ACCOUNT_SID_UPGRADED_FOR_USER
                 # # # Your Auth Token from twilio.com/console
-                # auth_token_admin = TWLIO_AUTH_TOKEN_NONE_UPGRADED_FOR_ADMIN
-                #
-                # sms_admin = Client(account_sid_admin, auth_token_admin)
-                # message_admin = sms_admin.messages.create(
-                #     to="+6281275803651",
-                #     from_="+12132961837",  # this non upgrade number
-                #     body=msg_to_admin)
-                #
-                # print(message_admin.sid)
+                auth_token_user = TWLIO_AUTH_TOKEN_UPGRADED_FOR_USER
+                # #
+                sms_client = Client(account_sid_user, auth_token_user)
+                # #
+                nomor_telepon_pemesan = no_hp_or_wa
+                message_pemesan = sms_client.messages.create(
+                    to=nomor_telepon_pemesan,
+                    from_="+12014307127",   # this upgraded number
+                    body=message_to_pemesan)
+                print(message_pemesan.sid)
+                ####################################################################
+                ########################### SMS for Admin ##########################
+
+                ## for admin notifications
+                ## Your Account SID from twilio.com/console
+                account_sid_admin = TWLIO_ACCOUNT_SID_NONE_UPGRADED_FOR_ADMIN
+                # # Your Auth Token from twilio.com/console
+                auth_token_admin = TWLIO_AUTH_TOKEN_NONE_UPGRADED_FOR_ADMIN
+
+                sms_admin = Client(account_sid_admin, auth_token_admin)
+                message_admin = sms_admin.messages.create(
+                    to="++6282285250554",
+                    from_="+12132961837",  # this non upgrade number
+                    body=msg_to_admin)
+
+                print(message_admin.sid)
 
                 #####-->/ TWILIO ########
                 ######################################################################
@@ -288,19 +288,19 @@ def buat_app():
     @app.route('/getvalue')
     def getvalue(current_user_position=None):
         cordinat = request.args.get('data')
-
-        cordinat = request.args.get('data')
         geolocator = Nominatim(user_agent="jual_ikan")
         location = geolocator.reverse(cordinat)
         get_json_value = location.raw
         get_state_name = get_json_value['address']['state']
         current_user_position = get_state_name
 
-        urutan_ikan_dalam_tampilan_halamanerr = db.session.query(Ikan.id_ikan, Ikan.nama_ikan, Ikan.berat_ikan_dalam_Kg,
-                                                                 Ikan.foto_ikan,Penjual).join(Penjual).filter(Penjual.domisili ==
+        current_location = get_state_name
+
+        urutan_ikan_dalam_tampilan_halamanerr = db.session.query(Ikan.id_ikan, Ikan.nama_ikan, Ikan.berat_ikan_dalam_Kg,Ikan.foto_ikan,
+                                                                 Ikan.harga_per_Kg, Penjual).join(Penjual).filter(Penjual.domisili ==
                                                                                                               current_user_position)
 
-        return render_template("nearby_places.html", IKANS=urutan_ikan_dalam_tampilan_halamanerr)
+        return render_template("nearby_places.html", IKANS=urutan_ikan_dalam_tampilan_halamanerr, CURRENT_LOCATION=current_location)
 
 
     @app.route('/nearby')
