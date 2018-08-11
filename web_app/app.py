@@ -30,6 +30,8 @@ def buat_app():
 
     db.init_app(app)
 
+    url_index = 'http://127.0.0.1:9999/'
+
     bootstrap = Bootstrap(app)
     login_manager = LoginManager()
     login_manager.init_app(app)
@@ -332,13 +334,12 @@ def buat_app():
                 db.session.add(new_user)
                 db.session.commit()
 
-                return "<h1>User telah berhasil dibuat, silahkan coba untuk login \
-                           <a href='http://127.0.0.1:9999/login'>Login</a></h1>"
+                return "<h1> Sukses mendaftar, Anda baru bisa login ketika akun sudah di aktivkan " \
+                       "admin. <br> kembali ke menu <a href=" + url_index + ">utama</a></h1>"
                 # return '<h1>' + form.username.data + ' ' + form.email.data + ' ' + form.password.data + '</h1>'
         except:
-            return """<html><h2> Data yang di inputkan harus unique, sepertinya salah satu data yang Anda \
-                        Masukan sudah terdaftar, Mohon ulangi input data dengan teliti...!!!  <br>
-                       <a href='http://127.0.0.1:9999/signup'>Ulangi Input Data</a></h2></html>"""
+            return "<h2> Data yang di inputkan harus unique, sepertinya salah satu data yang Anda Masukan sudah terdaftar, " \
+                   "Mohon ulangi input data dengan teliti...!!!  <br> <a href=" + url_index + "signup>Ulangi Input Data</a></h2>"
 
         return render_template('signup.html', form=form)
 
