@@ -1,7 +1,8 @@
 from flask_security import RoleMixin, UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, String, Integer, Enum, Numeric, Unicode, ForeignKey, DateTime
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, backref
+from sqlalchemy_utils.functions import foreign_keys
 
 db = SQLAlchemy()
 
@@ -43,7 +44,8 @@ class Penjual(db.Model, UserMixin):
                             backref=db.backref('users', lazy='dynamic'))
 
     domisili_id = Column(Integer, ForeignKey(Domisili.id_domisili))
-    domisili = relationship(Domisili)
+    # domisili = relationship(Domisili, foreign_keys=domisili_id)
+    domisili = Column(String)
 
     def __str__(self):
         return self.email
@@ -57,8 +59,6 @@ class Penjual(db.Model, UserMixin):
             self.domisili = domisili
     except:
         pass
-
-
 
 
 class Ikan(db.Model):

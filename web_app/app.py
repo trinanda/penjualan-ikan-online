@@ -22,6 +22,9 @@ from views import ViewIkan, ViewPembeli, MyModelView, RegisterFormView, LoginFor
 from flask_wtf import FlaskForm, RecaptchaField
 import string
 import random
+import geocoder
+
+
 
 def buat_app():
 
@@ -225,17 +228,17 @@ def buat_app():
 
                 ## for admin notifications
                 ## Your Account SID from twilio.com/console
-                account_sid_admin = TWLIO_ACCOUNT_SID_NONE_UPGRADED_FOR_ADMIN
-                # # Your Auth Token from twilio.com/console
-                auth_token_admin = TWLIO_AUTH_TOKEN_NONE_UPGRADED_FOR_ADMIN
-
-                sms_admin = Client(account_sid_admin, auth_token_admin)
-                message_admin = sms_admin.messages.create(
-                    to="++6282285250554",
-                    from_="+12132961837",  # this non upgrade number
-                    body=msg_to_admin)
-
-                print(message_admin.sid)
+                # account_sid_admin = TWLIO_ACCOUNT_SID_NONE_UPGRADED_FOR_ADMIN
+                # # # Your Auth Token from twilio.com/console
+                # auth_token_admin = TWLIO_AUTH_TOKEN_NONE_UPGRADED_FOR_ADMIN
+                #
+                # sms_admin = Client(account_sid_admin, auth_token_admin)
+                # message_admin = sms_admin.messages.create(
+                #     to="++6282285250554",
+                #     from_="+12132961837",  # this non upgrade number
+                #     body=msg_to_admin)
+                #
+                # print(message_admin.sid)
 
                 #####-->/ TWILIO ########
                 ######################################################################
@@ -291,23 +294,38 @@ def buat_app():
 
     @app.route('/getvalue')
     def getvalue(current_user_position=None):
+
         cordinat = request.args.get('data')
-        geolocator = Nominatim(user_agent="jual_ikan")
-        location = geolocator.reverse(cordinat)
-        get_json_value = location.raw
 
-        # get_village_name = get_json_value['address']['village']
-        get_county_name = get_json_value['address']['county']
-        get_state_name = get_json_value['address']['state']
-        current_user_position = get_county_name + ', ' + get_state_name
+        ######################### GEOPY #################################
+        # geolocator = Nominatim(user_agent="jual_ikan")
+        # location = geolocator.reverse(cordinat)
+        # get_json_value = location.raw
+        #
+        # # get_village_name = get_json_value['address']['village']
+        # get_county_name = get_json_value['address']['county']
+        # get_state_name = get_json_value['address']['state']
+        ######################### GEOPY #################################
 
-        # current_location = get_state_name
+        ######################### GEOCODER #################################
+        g = geocoder.google(cordinat, method='reverse')
+        get_county_name = g.json['county']
+        get_state_name = g.json['state']
+        ######################### GEOCODER #################################
+
+        current_user_position_information = get_county_name + ', ' + get_state_name
+
+        print('g', g)
+        print('get_county_name', get_county_name)
+        print('get_state_name', get_state_name)
 
         urutan_ikan_dalam_tampilan_halamanerr = db.session.query(Ikan.id_ikan, Ikan.nama_ikan, Ikan.berat_ikan_dalam_Kg,Ikan.foto_ikan,
                                                                  Ikan.harga_per_Kg, Penjual).join(Penjual).filter(Penjual.domisili ==
-                                                                                                              current_user_position)
+                                                                                                                  get_county_name)
 
-        return render_template("nearby_places.html", IKANS=urutan_ikan_dalam_tampilan_halamanerr, CURRENT_LOCATION=current_user_position)
+        print('gggg', urutan_ikan_dalam_tampilan_halamanerr)
+
+        return render_template("nearby_places.html", IKANS=urutan_ikan_dalam_tampilan_halamanerr, CURRENT_LOCATION=current_user_position_information)
 
 
     @app.route('/nearby')
