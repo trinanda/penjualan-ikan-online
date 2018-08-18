@@ -16,8 +16,9 @@ from web_app.settings import TWLIO_ACCOUNT_SID_UPGRADED_FOR_USER, TWLIO_AUTH_TOK
 sys.path.append(os.getcwd() + '/web_app')
 from flask_admin import Admin, helpers as admin_helpers
 from flask import Flask, render_template, request, session, url_for, flash, make_response
-from models import db, Ikan, Pembeli, Penjual, Role
-from views import ViewIkan, ViewPembeli, MyModelView, RegisterFormView, LoginFormView, AddIkanForm, EditIkanForm
+from models import db, Ikan, Pembeli, Penjual, Role, Domisili
+from views import ViewIkan, ViewPembeli, MyModelView, RegisterFormView, LoginFormView, AddIkanForm, EditIkanForm, \
+    DomisiliView
 from flask_wtf import FlaskForm, RecaptchaField
 import string
 import random
@@ -52,6 +53,7 @@ def buat_app():
     admin.add_view(ViewPembeli(Pembeli, db.session))
     admin.add_view(MyModelView(Role, db.session))
     admin.add_view(MyModelView(Penjual, db.session))
+    admin.add_view(DomisiliView(Domisili, db.session))
 
     # define a context processor for merging flask-admin's template context into the
     # flask-security views.
@@ -293,16 +295,19 @@ def buat_app():
         geolocator = Nominatim(user_agent="jual_ikan")
         location = geolocator.reverse(cordinat)
         get_json_value = location.raw
-        get_state_name = get_json_value['address']['state']
-        current_user_position = get_state_name
 
-        current_location = get_state_name
+        # get_village_name = get_json_value['address']['village']
+        get_county_name = get_json_value['address']['county']
+        get_state_name = get_json_value['address']['state']
+        current_user_position = get_county_name + ', ' + get_state_name
+
+        # current_location = get_state_name
 
         urutan_ikan_dalam_tampilan_halamanerr = db.session.query(Ikan.id_ikan, Ikan.nama_ikan, Ikan.berat_ikan_dalam_Kg,Ikan.foto_ikan,
                                                                  Ikan.harga_per_Kg, Penjual).join(Penjual).filter(Penjual.domisili ==
                                                                                                               current_user_position)
 
-        return render_template("nearby_places.html", IKANS=urutan_ikan_dalam_tampilan_halamanerr, CURRENT_LOCATION=current_location)
+        return render_template("nearby_places.html", IKANS=urutan_ikan_dalam_tampilan_halamanerr, CURRENT_LOCATION=current_user_position)
 
 
     @app.route('/nearby')
@@ -334,7 +339,7 @@ def buat_app():
                 db.session.add(new_user)
                 db.session.commit()
 
-                return "<h1> Sukses mendaftar, Anda baru bisa login ketika akun sudah di aktivkan " \
+                return "<h1> Sukses mendaftar, Anda baru bisa login ketika akun sudah di aktivkan oleh" \
                        "admin. <br> kembali ke menu <a href=" + url_index + ">utama</a></h1>"
                 # return '<h1>' + form.username.data + ' ' + form.email.data + ' ' + form.password.data + '</h1>'
         except:

@@ -21,6 +21,14 @@ class Role(db.Model, RoleMixin):
     def __str__(self):
         return self.name
 
+class Domisili(db.Model):
+    __tablename__ = 'domisili'
+    id_domisili = Column(Integer, primary_key=True)
+    domisili = Column(String)
+
+
+    def __str__(self):
+        return self.domisili
 
 class Penjual(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -28,11 +36,14 @@ class Penjual(db.Model, UserMixin):
     email = db.Column(db.String(255), unique=True)
     nomor_telepon = db.Column(db.VARCHAR(255), unique=True)
     password = db.Column(db.String(255))
-    domisili = Column(db.VARCHAR)
+
     active = db.Column(db.Boolean())
     confirmed_at = db.Column(db.DateTime())
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
+
+    domisili_id = Column(Integer, ForeignKey(Domisili.id_domisili))
+    domisili = relationship(Domisili)
 
     def __str__(self):
         return self.email
@@ -46,6 +57,8 @@ class Penjual(db.Model, UserMixin):
             self.domisili = domisili
     except:
         pass
+
+
 
 
 class Ikan(db.Model):

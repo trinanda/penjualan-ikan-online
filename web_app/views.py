@@ -2,8 +2,9 @@ import os
 import os.path as op
 
 from flask_admin.contrib.sqla import ModelView
+from wtforms.ext.sqlalchemy.fields import QuerySelectField
 
-from web_app.models import Ikan
+from web_app.models import Ikan, Domisili, db
 from flask_admin import Admin, form
 from sqlalchemy.event import listens_for
 from flask_admin.contrib import sqla
@@ -16,7 +17,7 @@ from flask_security import Security, SQLAlchemyUserDatastore, \
     UserMixin, RoleMixin, login_required, current_user
 
 from wtforms import StringField, PasswordField, BooleanField
-from wtforms.validators import InputRequired, Email, Length, DataRequired
+from wtforms.validators import InputRequired, Email, Length, DataRequired, Required
 from flask_wtf import FlaskForm
 
 
@@ -145,16 +146,17 @@ class ViewIkan(UserAkses):
 
 
 
+
+
 # Create customized model view class
 class MyModelView(AdminAkses):
     pass
 
+class DomisiliView(AdminAkses):
+    pass
 
-DOMISILI = ['Aceh','Bali','Banten','Bengkulu','Gorontalo','Jakarta','Jambi','Jawa Barat','Jawa Tengah','Jawa Timur',
-            'Kalimantan Barat','Kalimantan Selatan','Kalimatan Tengah','Kalimantan Timur','Kalimantan Utara',
-            'Kepulauan Bangka Belitung','Kepulauan Riau','Lampung','Maluku','Maluku Utara','Nusa Tenggara Barat',
-            'Nusa Tenggara Timur','Papua','Papua Barat','Riau','Sulawesi Barat','Sulawesi Selatan','Sulawesi Tengah',
-            'Sulawesi Tenggara','Sulawesi Utara','Sumatera Barat','Sumatera Selatan','Sumatera Utara','Yogyakarta']
+def pilih_domisili():
+    return db.session.query(Domisili).all()
 
 
 class RegisterFormView(FlaskForm):
@@ -163,21 +165,11 @@ class RegisterFormView(FlaskForm):
                                              Email(message='Invalid email'), Length(max=50)], render_kw={"placeholder": "Email"})
     nomor_telepon = StringField('Nomor Telepon', validators=[DataRequired()], render_kw={"placeholder": "Nomor Telepon"})
     password = PasswordField('password', validators=[InputRequired(), Length(min=5, max=80)], render_kw={"placeholder": "Password"})
-    # domisili = StringField('Domisili', validators=[DataRequired()],
-    #                                render_kw={"placeholder": "Domisili penjualan"})
 
-    domisili = SelectField('Domisili', validators=[DataRequired()], choices=[(DOMISILI[0],DOMISILI[0]),(DOMISILI[1],DOMISILI[1]),(DOMISILI[2],DOMISILI[2]),
-                                                                             (DOMISILI[3], DOMISILI[3]),(DOMISILI[4],DOMISILI[4]),(DOMISILI[5],DOMISILI[5]),
-                                                                             (DOMISILI[6], DOMISILI[6]),(DOMISILI[7],DOMISILI[7]),(DOMISILI[8],DOMISILI[8]),
-                                                                             (DOMISILI[9], DOMISILI[9]),(DOMISILI[10],DOMISILI[10]),(DOMISILI[11],DOMISILI[11]),
-                                                                             (DOMISILI[12], DOMISILI[12]),(DOMISILI[13],DOMISILI[13]),(DOMISILI[14],DOMISILI[14]),
-                                                                             (DOMISILI[15], DOMISILI[15]),(DOMISILI[16],DOMISILI[16]),(DOMISILI[17],DOMISILI[17]),
-                                                                             (DOMISILI[18], DOMISILI[18]),(DOMISILI[19],DOMISILI[19]),(DOMISILI[20],DOMISILI[20]),
-                                                                             (DOMISILI[21], DOMISILI[21]),(DOMISILI[22], DOMISILI[22]),(DOMISILI[23], DOMISILI[23]),
-                                                                             (DOMISILI[24], DOMISILI[24]),(DOMISILI[25], DOMISILI[25]),(DOMISILI[26], DOMISILI[26]),
-                                                                             (DOMISILI[27], DOMISILI[27]),(DOMISILI[28], DOMISILI[28]),(DOMISILI[29], DOMISILI[29]),
-                                                                             (DOMISILI[30], DOMISILI[30]),(DOMISILI[31], DOMISILI[31]),(DOMISILI[32], DOMISILI[32]),
-                                                                             (DOMISILI[33], DOMISILI[33])])
+
+    domisili = QuerySelectField(u'Domisili',
+                                validators=[Required()],
+                                query_factory=pilih_domisili)
 
 class LoginFormView(FlaskForm):
     email = StringField('email', validators=[InputRequired(), Length(min=5, max=50)])

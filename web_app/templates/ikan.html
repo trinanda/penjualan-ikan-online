@@ -47,7 +47,7 @@
 {% endfor %}
 
 
- <form method="get" action="http://localhost:9999/getvalue">
+ <form method="get" action="{{ url_for('getvalue') }}">
       <textarea name="data" id="demo" cols="30" rows="10" hidden></textarea><br>
 
       <input type="submit" value="Lokasi Terdekat" class="btn btn-info btn-lg btn-block">
