@@ -10,20 +10,18 @@ from geopy import Nominatim
 from twilio.rest import Client
 from werkzeug.utils import redirect
 
-from web_app.settings import TWLIO_ACCOUNT_SID_UPGRADED_FOR_USER, TWLIO_AUTH_TOKEN_UPGRADED_FOR_USER, \
-    TWLIO_ACCOUNT_SID_NONE_UPGRADED_FOR_ADMIN, TWLIO_AUTH_TOKEN_NONE_UPGRADED_FOR_ADMIN
+from web_app.settings import TWLIO_ACCOUNT_SID_UPGRADED_FOR_USER, TWLIO_AUTH_TOKEN_UPGRADED_FOR_USER
 
 sys.path.append(os.getcwd() + '/web_app')
-from flask_admin import Admin, helpers as admin_helpers
+from flask_admin import helpers as admin_helpers
 from flask import Flask, render_template, request, session, url_for, flash, make_response
 from models import db, Ikan, Pembeli, Penjual, Role, Domisili
-from views import ViewIkan, ViewPembeli, MyModelView, RegisterFormView, LoginFormView, AddIkanForm, EditIkanForm, \
-    DomisiliView
+from views import ViewIkan, ViewPembeli, MyModelView, DomisiliView
 from flask_wtf import FlaskForm, RecaptchaField
 import string
 import random
 import geocoder
-
+from form import RegisterFormView, LoginFormView, AddIkanForm, EditIkanForm
 
 
 def buat_app():
@@ -348,7 +346,6 @@ def buat_app():
     @app.route('/signup', methods=['GET', 'POST'])
     def signup():
         form = RegisterFormView()
-
         try:
             if form.validate_on_submit():
                 hashed_password = form.password.data
@@ -357,9 +354,8 @@ def buat_app():
                 db.session.add(new_user)
                 db.session.commit()
 
-                return "<h1> Sukses mendaftar, Anda baru bisa login ketika akun sudah di aktivkan oleh" \
+                return "<h1> Sukses mendaftar, Anda baru bisa login ketika akun sudah di aktivkan oleh " \
                        "admin. <br> kembali ke menu <a href=" + url_index + ">utama</a></h1>"
-                # return '<h1>' + form.username.data + ' ' + form.email.data + ' ' + form.password.data + '</h1>'
         except:
             return "<h2> Data yang di inputkan harus unique, sepertinya salah satu data yang Anda Masukan sudah terdaftar, " \
                    "Mohon ulangi input data dengan teliti...!!!  <br> <a href=" + url_index + "signup>Ulangi Input Data</a></h2>"

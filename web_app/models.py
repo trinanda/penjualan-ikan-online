@@ -2,7 +2,7 @@ from flask_security import RoleMixin, UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, String, Integer, Enum, Numeric, Unicode, ForeignKey, DateTime
 from sqlalchemy.orm import relationship, backref
-from sqlalchemy_utils.functions import foreign_keys
+
 
 db = SQLAlchemy()
 
@@ -27,7 +27,6 @@ class Domisili(db.Model):
     id_domisili = Column(Integer, primary_key=True)
     domisili = Column(String)
 
-
     def __str__(self):
         return self.domisili
 
@@ -48,7 +47,7 @@ class Penjual(db.Model, UserMixin):
     domisili = Column(String)
 
     def __str__(self):
-        return self.email
+        return self.email, self.domisili
 
     try:
         def __init__(self, nama_toko='', email='', nomor_telepon='', password='', domisili=''):
