@@ -50,12 +50,13 @@ class Penjual(db.Model, UserMixin):
         return self.email, self.domisili
 
     try:
-        def __init__(self, nama_toko='', email='', nomor_telepon='', password='', domisili=''):
+        def __init__(self, nama_toko='', email='', nomor_telepon='', password='', domisili='', active=False):
             self.nama_toko = nama_toko
             self.email = email
             self.nomor_telepon = nomor_telepon
             self.password = password
             self.domisili = domisili
+            self.active = active
     except:
         pass
 
