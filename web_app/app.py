@@ -214,11 +214,17 @@ def buat_app():
                 sms_client = Client(account_sid_user, auth_token_user)
                 # #
                 nomor_telepon_pemesan = no_hp_or_wa
-                message_pemesan = sms_client.messages.create(
-                    to=nomor_telepon_pemesan,
-                    from_="+12014307127",   # this upgraded number
-                    body=message_to_pemesan)
+                try:
+                    message_pemesan = sms_client.messages.create(
+                        to=nomor_telepon_pemesan,
+                        from_="+12014307127",   # this upgraded number
+                        body=message_to_pemesan)
+                except:
+                    return '<h1 align="center">Pada kolom nomor telepon mohon masukan beserta kode negara <br> ' \
+                           'contoh: +628123123123</h1>'
                 print(message_pemesan.sid)
+
+
                 ####################################################################
                 ########################### SMS for Admin ##########################
 
