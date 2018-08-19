@@ -350,7 +350,7 @@ def buat_app():
             if form.validate_on_submit():
                 hashed_password = form.password.data
                 new_user = Penjual(nama_toko=form.nama_toko.data, email=form.email.data, nomor_telepon=form.nomor_telepon.data,
-                                password=hashed_password, domisili=form.domisili.data)
+                                password=hashed_password, domisili=str(form.domisili.data))
                 db.session.add(new_user)
                 db.session.commit()
 
