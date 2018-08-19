@@ -122,14 +122,12 @@ def buat_app():
         harga_per_Kg = Ikan.query.filter_by(id_ikan=id_ikan).first()
         harga_per_Kg = harga_per_Kg.harga_per_Kg
 
-        # current_user_position = 'Sumatera Selatan'
+        penjual_id = db.session.query(Penjual.id).join(Ikan).filter(Ikan.id_ikan == id_ikan).first()[0]
 
-        # try:
-        #     result, lokasi = db.session.query(Ikan, User).join(User).filter(User.domisili == current_user_position).first()
-        # except:
-        #     pass
-        #
-        # print('ggg', lokasi)
+        penjual_cabang = db.session.query(Penjual.nama_toko).filter(Penjual.id == penjual_id).first()[0]
+
+        print('penjual_id', penjual_id)
+        print('penjual_cabang', penjual_cabang)
 
         if request.method == "get":
             pesan_berapa_kg = request.form.get('pesan_berapa_kg')
@@ -144,7 +142,7 @@ def buat_app():
 
         return render_template("detail_ikan.html", ID_IKAN=id_ikan, NAMA_IKAN=nama_ikan, BERAT_IKAN= berat_ikan_dalam_Kg,
                                HARGA_IKAN=harga_per_Kg, KETERANGAN_IKAN=keterangan_ikan, MINIMAL_ORDER=minimal_order_dalam_Kg,
-                               FOTO_IKAN=foto_ikan)
+                               FOTO_IKAN=foto_ikan, PENJUAL_CABANG=penjual_cabang)
 
 
 
