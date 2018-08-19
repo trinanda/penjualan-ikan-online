@@ -10,7 +10,8 @@ from geopy import Nominatim
 from twilio.rest import Client
 from werkzeug.utils import redirect
 
-from web_app.settings import TWLIO_ACCOUNT_SID_UPGRADED_FOR_USER, TWLIO_AUTH_TOKEN_UPGRADED_FOR_USER
+from web_app.settings import TWLIO_ACCOUNT_SID_UPGRADED_FOR_USER, TWLIO_AUTH_TOKEN_UPGRADED_FOR_USER, \
+    TWLIO_ACCOUNT_SID_NONE_UPGRADED_FOR_ADMIN, TWLIO_AUTH_TOKEN_NONE_UPGRADED_FOR_ADMIN
 
 sys.path.append(os.getcwd() + '/web_app')
 from flask_admin import helpers as admin_helpers
@@ -228,19 +229,19 @@ def buat_app():
                 ####################################################################
                 ########################### SMS for Admin ##########################
 
-                ## for admin notifications
-                ## Your Account SID from twilio.com/console
-                # account_sid_admin = TWLIO_ACCOUNT_SID_NONE_UPGRADED_FOR_ADMIN
-                # # # Your Auth Token from twilio.com/console
-                # auth_token_admin = TWLIO_AUTH_TOKEN_NONE_UPGRADED_FOR_ADMIN
-                #
-                # sms_admin = Client(account_sid_admin, auth_token_admin)
-                # message_admin = sms_admin.messages.create(
-                #     to="++6282285250554",
-                #     from_="+12132961837",  # this non upgrade number
-                #     body=msg_to_admin)
-                #
-                # print(message_admin.sid)
+                # for admin notifications
+                # Your Account SID from twilio.com/console
+                account_sid_admin = TWLIO_ACCOUNT_SID_NONE_UPGRADED_FOR_ADMIN
+                # # Your Auth Token from twilio.com/console
+                auth_token_admin = TWLIO_AUTH_TOKEN_NONE_UPGRADED_FOR_ADMIN
+
+                sms_admin = Client(account_sid_admin, auth_token_admin)
+                message_admin = sms_admin.messages.create(
+                    to="++6282285250554",
+                    from_="+12132961837",  # this non upgrade number
+                    body=msg_to_admin)
+
+                print(message_admin.sid)
 
                 #####-->/ TWILIO ########
                 ######################################################################
