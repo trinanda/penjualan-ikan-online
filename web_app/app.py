@@ -301,22 +301,22 @@ def buat_app():
         cordinat = request.args.get('data')
 
         ######################### GEOPY #################################
-        geolocator = Nominatim(user_agent="jual_ikan")
-        location = geolocator.reverse(cordinat)
-        get_json_value = location.raw
-
-        # get_village_name = get_json_value['address']['village']
-        get_county_name = get_json_value['address']['county']
-        get_state_name = get_json_value['address']['state']
+        # geolocator = Nominatim(user_agent="jual_ikan")
+        # location = geolocator.reverse(cordinat)
+        # get_json_value = location.raw
+        #
+        # # get_village_name = get_json_value['address']['village']
+        # get_county_name = get_json_value['address']['county']
+        # get_state_name = get_json_value['address']['state']
         ######################### GEOPY #################################
 
         ######################### GEOCODER #################################
-        # try:
-        #     g = geocoder.google(cordinat, method='reverse')
-        #     get_county_name = g.json['county']
-        #     get_state_name = g.json['state']
-        # except TypeError:
-        #     return 'gagal mendapatkan kordinat, silahkan kembali dan ulangi!!!'
+        try:
+            g = geocoder.google(cordinat, method='reverse')
+            get_county_name = g.json['county']
+            get_state_name = g.json['state']
+        except TypeError:
+            return 'gagal mendapatkan kordinat, silahkan kembali dan ulangi!!!'
         ######################### GEOCODER #################################
 
         current_user_position_information = get_county_name + ', ' + get_state_name
