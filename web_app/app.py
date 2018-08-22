@@ -208,40 +208,40 @@ def buat_app():
                 ############################ SMS for User ###########################
                 # for user notifications
                 # Your Account SID from twilio.com/console
-                account_sid_user = TWLIO_ACCOUNT_SID_UPGRADED_FOR_USER
+                # account_sid_user = TWLIO_ACCOUNT_SID_UPGRADED_FOR_USER
+                # # # # Your Auth Token from twilio.com/console
+                # auth_token_user = TWLIO_AUTH_TOKEN_UPGRADED_FOR_USER
+                # # #
+                # sms_client = Client(account_sid_user, auth_token_user)
+                # # #
+                # nomor_telepon_pemesan = no_hp_or_wa
+                # try:
+                #     message_pemesan = sms_client.messages.create(
+                #         to=nomor_telepon_pemesan,
+                #         from_="+12014307127",   # this upgraded number
+                #         body=message_to_pemesan)
+                # except:
+                #     return '<h1 align="center">Pada kolom nomor telepon mohon masukan beserta kode negara <br> ' \
+                #            'contoh: +628123123123</h1>'
+                # print(message_pemesan.sid)
+                #
+                #
+                # ####################################################################
+                # ########################### SMS for Admin ##########################
+                #
+                # # for admin notifications
+                # # Your Account SID from twilio.com/console
+                # account_sid_admin = TWLIO_ACCOUNT_SID_NONE_UPGRADED_FOR_ADMIN
                 # # # Your Auth Token from twilio.com/console
-                auth_token_user = TWLIO_AUTH_TOKEN_UPGRADED_FOR_USER
-                # #
-                sms_client = Client(account_sid_user, auth_token_user)
-                # #
-                nomor_telepon_pemesan = no_hp_or_wa
-                try:
-                    message_pemesan = sms_client.messages.create(
-                        to=nomor_telepon_pemesan,
-                        from_="+12014307127",   # this upgraded number
-                        body=message_to_pemesan)
-                except:
-                    return '<h1 align="center">Pada kolom nomor telepon mohon masukan beserta kode negara <br> ' \
-                           'contoh: +628123123123</h1>'
-                print(message_pemesan.sid)
-
-
-                ####################################################################
-                ########################### SMS for Admin ##########################
-
-                # for admin notifications
-                # Your Account SID from twilio.com/console
-                account_sid_admin = TWLIO_ACCOUNT_SID_NONE_UPGRADED_FOR_ADMIN
-                # # Your Auth Token from twilio.com/console
-                auth_token_admin = TWLIO_AUTH_TOKEN_NONE_UPGRADED_FOR_ADMIN
-
-                sms_admin = Client(account_sid_admin, auth_token_admin)
-                message_admin = sms_admin.messages.create(
-                    to="++6282285250554",
-                    from_="+12132961837",  # this non upgrade number
-                    body=msg_to_admin)
-
-                print(message_admin.sid)
+                # auth_token_admin = TWLIO_AUTH_TOKEN_NONE_UPGRADED_FOR_ADMIN
+                #
+                # sms_admin = Client(account_sid_admin, auth_token_admin)
+                # message_admin = sms_admin.messages.create(
+                #     to="++6282285250554",
+                #     from_="+12132961837",  # this non upgrade number
+                #     body=msg_to_admin)
+                #
+                # print(message_admin.sid)
 
                 #####-->/ TWILIO ########
                 ######################################################################
@@ -301,24 +301,27 @@ def buat_app():
         cordinat = request.args.get('data')
 
         ######################### GEOPY #################################
-        # geolocator = Nominatim(user_agent="jual_ikan")
-        # location = geolocator.reverse(cordinat)
-        # get_json_value = location.raw
-        #
-        # # get_village_name = get_json_value['address']['village']
-        # get_county_name = get_json_value['address']['county']
-        # get_state_name = get_json_value['address']['state']
+        geolocator = Nominatim(user_agent="jual_ikan")
+        location = geolocator.reverse(cordinat)
+        get_json_value = location.raw
+
+        # get_village_name = get_json_value['address']['village']
+        get_county_name = get_json_value['address']['county']
+        get_state_name = get_json_value['address']['state']
         ######################### GEOPY #################################
 
         ######################### GEOCODER #################################
-        g = geocoder.google(cordinat, method='reverse')
-        get_county_name = g.json['county']
-        get_state_name = g.json['state']
+        # try:
+        #     g = geocoder.google(cordinat, method='reverse')
+        #     get_county_name = g.json['county']
+        #     get_state_name = g.json['state']
+        # except TypeError:
+        #     return 'gagal mendapatkan kordinat, silahkan kembali dan ulangi!!!'
         ######################### GEOCODER #################################
 
         current_user_position_information = get_county_name + ', ' + get_state_name
 
-        print('g', g)
+        # print('g', g)
         print('get_county_name', get_county_name)
         print('get_state_name', get_state_name)
 
