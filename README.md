@@ -3,5 +3,4 @@
 # Bismillah , semoga berhasil
 
 
-### TODO
-    - edit foto ikan
+#### This project build with Python flask
